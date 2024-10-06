@@ -1,9 +1,43 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Base game
+Corporation.create! name: "Credicor"
+Corporation.create! name: "Ecoline"
+Corporation.create! name: "Helion"
+Corporation.create! name: "Mining Guild"
+Corporation.create! name: "Interplanetary Cinematics"
+Corporation.create! name: "Inventrix"
+Corporation.create! name: "Phobolog"
+Corporation.create! name: "Tharsis Republic"
+Corporation.create! name: "Thorgate"
+Corporation.create! name: "United Nations Mars Initiative"
+
+# Corporate Era
+Corporation.create! name: "Teractor"
+Corporation.create! name: "Saturn Systems"
+
+# Venus Next
+Corporation.create! name: "Aphrodite"
+Corporation.create! name: "Celestic"
+Corporation.create! name: "Manutech"
+Corporation.create! name: "Morning Star Inc."
+Corporation.create! name: "Viron"
+
+# Prelude
+Corporation.create! name: "Cheung Shing Mars"
+Corporation.create! name: "Point Luna"
+Corporation.create! name: "Robinson Industries"
+Corporation.create! name: "Valley Trust"
+Corporation.create! name: "Vitor"
+
+# Colonies
+Corporation.create! name: "Aridor"
+Corporation.create! name: "Arklight"
+Corporation.create! name: "Polyphemos"
+Corporation.create! name: "Poseidon"
+Corporation.create! name: "Stormcraft"
+
+# Turmoil
+Corporation.create! name: "Lakefront Resorts"
+Corporation.create! name: "Pristar"
+Corporation.create! name: "Septem Tribus"
+Corporation.create! name: "Terralabs Research"
+Corporation.create! name: "Utopia Inveset"
