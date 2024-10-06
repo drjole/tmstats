@@ -25,6 +25,7 @@
   <body>
     <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
       <% if Current.user %>
+        <%= link_to "New game", new_game_path %>
         <%= link_to "Profile", profile_path %>
         <%= button_to "Logout", session_path, method: :delete %>
       <% else %>

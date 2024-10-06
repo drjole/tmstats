@@ -1,0 +1,19 @@
+<%= form_with model: game do |form| %>
+  <%= render "shared/errors", form: form %>
+
+  <%= form.label :num_generations %>
+  <%= form.number_field :num_generations, required: true, min: 0, step: 1 %>
+
+  <%= form.label :board %>
+  <%= form.collection_radio_buttons :board_id, Board.all, :id, :name %>
+
+  <% 5.times do |i| %>
+    <%= form.label :"player_#{i}" %>
+    <%= form.collection_select :"user_#{i}_id", User.all, :id, :name, include_blank: true %>
+
+    <%= form.label :"corporation_#{i}" %>
+    <%= form.collection_select :"corporation_#{i}_id", Corporation.all, :id, :name, include_blank: true %>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
