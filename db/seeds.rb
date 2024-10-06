@@ -1,3 +1,7 @@
+Board.create! name: "Tharsis"
+Board.create! name: "Hellas"
+Board.create! name: "Elysium"
+
 # Base game
 Corporation.create! name: "Credicor"
 Corporation.create! name: "Ecoline"

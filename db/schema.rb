@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_06_102636) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_06_112100) do
+  create_table "boards", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "corporations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -27,6 +33,20 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_06_102636) do
     t.integer "num_generations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "board_id", null: false
+    t.index ["board_id"], name: "index_games_on_board_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
+    t.integer "corporation_id", null: false
+    t.integer "victory_points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corporation_id"], name: "index_players_on_corporation_id"
+    t.index ["game_id"], name: "index_players_on_game_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -46,5 +66,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_06_102636) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "games", "boards"
+  add_foreign_key "players", "corporations"
+  add_foreign_key "players", "games"
+  add_foreign_key "players", "users"
   add_foreign_key "sessions", "users"
 end
