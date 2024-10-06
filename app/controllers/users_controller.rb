@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: [:new, :create]
 
-  def index
-    @users = User.all
-  end
-
   def show
     @user = if params[:id]
       User.find(params[:id])
@@ -50,6 +46,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email_address, :password, :password_confirmation)
+    params.require(:user).permit(:email_address, :name, :password, :password_confirmation)
   end
 end
