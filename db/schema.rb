@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_06_112537) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_06_115447) do
   create_table "boards", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -21,6 +21,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_06_112537) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "extension_id", null: false
+    t.index ["extension_id"], name: "index_corporations_on_extension_id"
   end
 
   create_table "extensions", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_06_112537) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "corporations", "extensions"
   add_foreign_key "games", "boards"
   add_foreign_key "players", "corporations"
   add_foreign_key "players", "games"
