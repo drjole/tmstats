@@ -1,9 +1,25 @@
 <p>
-  Board:
+  <b>Board:</b>
   <%= game.board.name %>
 </p>
 
 <p>
-  Number of generations:
+  <b>Number of generations:</b>
   <%= game.num_generations %>
 </p>
+
+<p>
+  <b>Players:</b>
+  <ul>
+    <% game.players.each do |player| %>
+      <li>
+        <%= player.user.name %>
+        (<%= player.corporation.name %>):
+        <%= player.victory_points %>
+        VP
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to "Edit this game", edit_game_path(game) %>

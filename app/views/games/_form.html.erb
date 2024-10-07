@@ -1,19 +1,30 @@
 <%= form_with model: game do |form| %>
   <%= render "shared/errors", form: form %>
 
-  <%= form.label :num_generations %>
-  <%= form.number_field :num_generations, required: true, min: 0, step: 1 %>
+  <div>
+    <%= form.label :num_generations %>
+    <%= form.number_field :num_generations, required: true, min: 0, step: 1 %>
+  </div>
 
-  <%= form.label :board %>
-  <%= form.collection_radio_buttons :board_id, Board.all, :id, :name %>
+  <div>
+    <%= form.label :board %>
+    <%= form.collection_radio_buttons :board_id, Board.all, :id, :name %>
+  </div>
 
-  <% 5.times do |i| %>
-    <%= form.label :"player_#{i}" %>
-    <%= form.collection_select :"user_#{i}_id", User.all, :id, :name, include_blank: true %>
+  <%= form.fields_for :players do |players_form| %>
+    <div>
+      <%= players_form.label :player %>
+      <%= players_form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
 
-    <%= form.label :"corporation_#{i}" %>
-    <%= form.collection_select :"corporation_#{i}_id", Corporation.all, :id, :name, include_blank: true %>
+      <%= players_form.label :corporation %>
+      <%= players_form.collection_select :corporation_id, Corporation.all, :id, :name, include_blank: true %>
+
+      <%= players_form.label :victory_points %>
+      <%= players_form.number_field :victory_points, min: 0, step: 1 %>
+    </div>
   <% end %>
 
-  <%= form.submit %>
+  <div>
+    <%= form.submit %>
+  </div>
 <% end %>

@@ -9,10 +9,12 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    5.times { @game.players.build }
   end
 
   def edit
     @game = Game.find(params[:id])
+    (5 - @game.players.count).times { @game.players.build }
   end
 
   def create
@@ -42,6 +44,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:num_generations, :board_id)
+    params.require(:game).permit(:num_generations, :board_id, players_attributes: [:id, :user_id, :corporation_id, :victory_points])
   end
 end
