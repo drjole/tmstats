@@ -33,7 +33,5 @@ jobs:
                   push: true
                   cache-from: type=gha
                   cache-to: type=gha,mode=max
-                  build-args: |
-                      RAILS_ENV=production
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
