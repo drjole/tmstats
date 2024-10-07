@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  resources :users, except: :index
+  resources :users, except: [:index, :new, :create]
   resources :games
 
-  get "/register", to: "users#new"
   get "/login", to: "sessions#new"
   get "/profile", to: "users#show"
 
