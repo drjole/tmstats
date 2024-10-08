@@ -55,11 +55,13 @@ Corporation.find_or_create_by! name: "Terralabs Research", extension: turmoil
 Corporation.find_or_create_by! name: "Utopia Inveset", extension: turmoil
 
 # Turmoil Kickstarter Promo Pack
-Corporation.find_or_create_by! name: "Factorum"
-Corporation.find_or_create_by! name: "Mons Insurance"
-Corporation.find_or_create_by! name: "Philares"
+turmoil_kickstarter_promo_pack = Extension.find_or_create_by! name: "Turmoil Kickstarter Promo Pack"
+Corporation.find_or_create_by! name: "Factorum", extension: turmoil_kickstarter_promo_pack
+Corporation.find_or_create_by! name: "Mons Insurance", extension: turmoil_kickstarter_promo_pack
+Corporation.find_or_create_by! name: "Philares", extension: turmoil_kickstarter_promo_pack
 
 # TM Promo Pack
-Corporation.find_or_create_by! name: "Arcadian Communities"
-Corporation.find_or_create_by! name: "Splice"
-Corporation.find_or_create_by! name: "Recyclon"
+tm_promo_pack = Extension.find_or_create_by! name: "TM Promo Pack"
+Corporation.find_or_create_by! name: "Arcadian Communities", extension: tm_promo_pack
+Corporation.find_or_create_by! name: "Splice", extension: tm_promo_pack
+Corporation.find_or_create_by! name: "Recyclon", extension: tm_promo_pack
