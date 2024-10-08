@@ -4,7 +4,6 @@ User.create! name: "Bob", email_address: "bob@example.com", password: "password"
 User.create! name: "Charlie", email_address: "charlie@example.com", password: "password", password_confirmation: "password"
 User.create! name: "David", email_address: "david@example.com", password: "password", password_confirmation: "password"
 User.create! name: "Eve", email_address: "eve@example.com", password: "password", password_confirmation: "password"
-
 # Base game
 base_game = Extension.create! name: "Base Game"
 Board.create! name: "Tharsis"
@@ -60,3 +59,13 @@ Corporation.create! name: "Pristar", extension: turmoil
 Corporation.create! name: "Septem Tribus", extension: turmoil
 Corporation.create! name: "Terralabs Research", extension: turmoil
 Corporation.create! name: "Utopia Inveset", extension: turmoil
+
+# Turmoil Kickstarter Promo Pack
+Corporation.create! name: "Factorum"
+Corporation.create! name: "Mons Insurance"
+Corporation.create! name: "Philares"
+
+# TM Promo Pack
+Corporation.create! name: "Arcadian Communities"
+Corporation.create! name: "Splice"
+Corporation.create! name: "Recyclon"
