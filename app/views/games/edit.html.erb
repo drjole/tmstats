@@ -2,4 +2,6 @@
 
 <%= render "form", game: @game %>
 
-<%= button_to "Delete game", @game, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<% if policy(@game).destroy? %>
+  <%= button_to "Delete game", @game, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<% end %>

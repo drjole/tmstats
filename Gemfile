@@ -62,6 +62,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
+# Other gems
+gem "pundit", "~> 2.4"
+
 # Language tooling
 group :development do
   gem "erb-formatter", require: false, git: "https://github.com/pelletencate/erb-formatter", ref: "99601be"

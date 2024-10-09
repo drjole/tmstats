@@ -4,19 +4,25 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :create, :update, :destroy]
 
   def index
+    authorize User
+    @users = User.all
   end
 
   def show
+    authorize @user
   end
 
   def new
+    authorize User
     @user = User.new
   end
 
   def edit
+    authorize @user
   end
 
   def create
+    authorize @user
     if @user.save
       start_new_session_for @user
       redirect_to @user, notice: "Successfully registered."
@@ -26,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       redirect_to @user, notice: "User edited."
     else
@@ -34,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     @user.destroy!
     redirect_to root_path, notice: "User deleted."
   end

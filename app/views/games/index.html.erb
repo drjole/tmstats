@@ -2,7 +2,9 @@
 
 <% if @games.none? %>
   There are not games yet.
-  <%= link_to "Create a new one.", new_game_path %>
+  <% if policy(Game).create? %>
+    <%= link_to "Create a new one.", new_game_path %>
+  <% end %>
 <% end %>
 
 <%= render @games %>

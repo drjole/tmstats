@@ -1,13 +1,16 @@
 class GamesController < ApplicationController
   def index
+    authorize Game
     @games = Game.all
   end
 
   def show
     @game = Game.find(params[:id])
+    authorize @game
   end
 
   def new
+    authorize Game
     @game = Game.new
     5.times { @game.players.build }
   end
@@ -15,10 +18,12 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
     (5 - @game.players.count).times { @game.players.build }
+    authorize @game
   end
 
   def create
     @game = Game.new(game_params)
+    authorize @game
     if @game.save
       redirect_to @game, notice: "Game created."
     else
@@ -29,6 +34,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
+    authorize @game
     if @game.update(game_params)
       redirect_to @game, notice: "Game edited."
     else
@@ -39,6 +45,7 @@ class GamesController < ApplicationController
 
   def destroy
     @game = Game.find(params[:id])
+    authorize @game
     @game.destroy!
     redirect_to root_path, notice: "Game deleted."
   end

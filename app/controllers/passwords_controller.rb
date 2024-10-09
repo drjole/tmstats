@@ -1,5 +1,7 @@
 class PasswordsController < ApplicationController
   allow_unauthenticated_access
+  allow_unauthorized_access
+
   before_action :set_user_by_token, only: [:edit, :update]
 
   def new

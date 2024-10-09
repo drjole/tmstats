@@ -1,5 +1,7 @@
 <address>
   <%= mail_to user.email_address %>
-  |
-  <%= link_to "Edit profile", edit_user_path(user) %>
+  <% if policy(user).update? %>
+    |
+    <%= link_to "Edit profile", user == Current.user ? profile_edit_path : edit_user_path(user) %>
+  <% end %>
 </address>

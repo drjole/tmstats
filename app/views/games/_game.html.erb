@@ -14,7 +14,9 @@
     <ul>
       <% game.players.each do |player| %>
         <li>
-          <%= link_to player.user.name, user_path(player.user) %>
+          <% if policy(player.user).show? %>
+            <%= link_to player.user.name, user_path(player.user) %>
+          <% end %>
           <% if player.corporation.present? %>
             (<%= player.corporation.name %>):
           <% end %>
@@ -25,6 +27,8 @@
     </ul>
   </p>
 
-  <%= link_to "Edit this game", edit_game_path(game) %>
+  <% if policy(game).update? %>
+    <%= link_to "Edit this game", edit_game_path(game) %>
+  <% end %>
 </div>
 <br>

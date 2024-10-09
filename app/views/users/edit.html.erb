@@ -3,4 +3,6 @@
 
 <%= render "form", user: @user %>
 
-<%= button_to "Delete profile", @user, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<% if policy(@user).destroy? %>
+  <%= button_to "Delete profile", @user, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<% end %>
