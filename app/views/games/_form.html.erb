@@ -1,24 +1,22 @@
 <%= form_with model: game do |form| %>
   <%= render "shared/errors", form: form %>
 
-  <div>
-    <%= form.label :date %>
+  <fieldset>
+    <legend><%= form.label :date %></legend>
     <%= form.date_field :date, required: true %>
-  </div>
+  </fieldset>
 
-  <div>
-    <%= form.label :number_of_generations %>
+  <fieldset>
+    <legend><%= form.label :number_of_generations %></legend>
     <%= form.number_field :num_generations, min: 0, step: 1 %>
-  </div>
+  </fieldset>
 
-  <div>
-    <%= form.label :board %>
+  <fieldset>
+    <legend><%= t(:board) %></legend>
     <%= form.collection_radio_buttons :board_id, Board.all, :id, :name do |b| %>
-      <div>
-        <%= b.radio_button %><%= b.label %>
-      </div>
+      <%= b.radio_button %><%= b.label %>
     <% end %>
-  </div>
+  </fieldset>
 
   <fieldset>
     <legend>Extensions</legend>
