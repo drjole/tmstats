@@ -8,11 +8,11 @@ class GamePolicy < ApplicationPolicy
   end
 
   def update?
-    participant?
+    participant? || admin?
   end
 
   def destroy?
-    participant?
+    participant? || admin?
   end
 
   private
