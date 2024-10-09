@@ -1,11 +1,5 @@
-<p>
-  <b>Name:</b>
-  <%= user.name %>
-</p>
-
-<p>
-  <b>Email address:</b>
-  <%= user.email_address %>
-</p>
-
-<%= link_to "Edit profile", edit_user_path(@user) %>
+<address>
+  <%= mail_to user.email_address %>
+  |
+  <%= link_to "Edit profile", edit_user_path(user) %>
+</address>

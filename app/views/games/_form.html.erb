@@ -2,18 +2,39 @@
   <%= render "shared/errors", form: form %>
 
   <div>
-    <%= form.label :num_generations %>
-    <%= form.number_field :num_generations, required: true, min: 0, step: 1 %>
+    <%= form.label :date %>
+    <%= form.date_field :date, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :number_of_generations %>
+    <%= form.number_field :num_generations, min: 0, step: 1 %>
   </div>
 
   <div>
     <%= form.label :board %>
-    <%= form.collection_radio_buttons :board_id, Board.all, :id, :name %>
+    <%= form.collection_radio_buttons :board_id, Board.all, :id, :name do |b| %>
+      <div>
+        <%= b.radio_button %><%= b.label %>
+      </div>
+    <% end %>
   </div>
 
+  <fieldset>
+    <legend>Extensions</legend>
+    <%= form.collection_check_boxes :extension_ids, Extension.all, :id, :name do |b| %>
+      <div>
+        <%= b.check_box %><%= b.label %>
+      </div>
+    <% end %>
+  </fieldset>
+
   <%= form.fields_for :players do |players_form| %>
-    <div>
-      <%= players_form.label :player %>
+    <fieldset>
+      <legend>Player
+        <%= players_form.options[:child_index] + 1 %></legend>
+
+      <%= players_form.label :user %>
       <%= players_form.collection_select :user_id, User.all, :id, :name, include_blank: true %>
 
       <%= players_form.label :corporation %>
@@ -21,7 +42,7 @@
 
       <%= players_form.label :victory_points %>
       <%= players_form.number_field :victory_points, min: 0, step: 1 %>
-    </div>
+    </fieldset>
   <% end %>
 
   <div>

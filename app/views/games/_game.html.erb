@@ -1,25 +1,30 @@
-<p>
-  <b>Board:</b>
-  <%= game.board.name %>
-</p>
-
-<p>
-  <b>Number of generations:</b>
-  <%= game.num_generations %>
-</p>
-
-<p>
-  <b>Players:</b>
-  <ul>
-    <% game.players.each do |player| %>
-      <li>
-        <%= player.user.name %>
-        (<%= player.corporation.name %>):
-        <%= player.victory_points %>
-        VP
-      </li>
+<br>
+<div>
+  <span><strong><%= game.date %></strong>
+    <%= game.board.name %>
+    <% if game.num_generations.present? %>
+      -
+      <%= game.num_generations %>
+      Generations
     <% end %>
-  </ul>
-</p>
+  </span>
 
-<%= link_to "Edit this game", edit_game_path(game) %>
+  <p>
+    <strong>Players:</strong>
+    <ul>
+      <% game.players.each do |player| %>
+        <li>
+          <%= link_to player.user.name, user_path(player.user) %>
+          <% if player.corporation.present? %>
+            (<%= player.corporation.name %>):
+          <% end %>
+          <%= player.victory_points %>
+          VP
+        </li>
+      <% end %>
+    </ul>
+  </p>
+
+  <%= link_to "Edit this game", edit_game_path(game) %>
+</div>
+<br>

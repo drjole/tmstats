@@ -1,3 +1,5 @@
+<h1>Edit game</h1>
+
 <%= render "form", game: @game %>
 
-<%= button_to "Delete game", @game, method: :delete %>
+<%= button_to "Delete game", @game, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

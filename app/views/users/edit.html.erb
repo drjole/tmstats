@@ -1,3 +1,6 @@
+<h1>Profile of
+  <%= @user.name %></h1>
+
 <%= render "form", user: @user %>
 
-<%= button_to "Delete profile", @user, method: :delete %>
+<%= button_to "Delete profile", @user, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

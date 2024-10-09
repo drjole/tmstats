@@ -1,1 +1,8 @@
+<h1>All games</h1>
+
+<% if @games.none? %>
+  There are not games yet.
+  <%= link_to "Create a new one.", new_game_path %>
+<% end %>
+
 <%= render @games %>
