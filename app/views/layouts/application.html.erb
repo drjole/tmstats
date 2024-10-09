@@ -32,17 +32,17 @@
           <span style="color: orange;">ADMIN</span>
         <% end %>
         <% if policy(Game).index? %>
-          <%= link_to "All games", games_path %>
+          <%= link_to "[All games]", games_path %>
         <% end %>
         <% if policy(Game).create? %>
-          <%= link_to "New game", new_game_path %>
+          <%= link_to "[New game]", new_game_path %>
         <% end %>
-        <%= link_to "My profile", profile_path %>
+        <%= link_to "[My profile]", profile_path %>
         <% if policy(User).index? %>
-          <%= link_to "All users", users_path %>
+          <%= link_to "[All users]", users_path %>
         <% end %>
         <% if policy(User).create? %>
-          <%= link_to "New user", new_user_path %>
+          <%= link_to "[New user]", new_user_path %>
         <% end %>
         <%= button_to "Logout", logout_path, method: :delete, form: { style: "display: inline;" } %>
       <% elsif !(controller_name == "sessions" && action_name = "new") %>
