@@ -70,6 +70,6 @@ group :development do
 
   gem "ruby-lsp", "~> 0.17", require: false
 
-  gem "standard", "~> 1.39", require: false
+  gem "standard", "~> 1.41", require: false
   gem "standard-rails", "~> 1.0", require: false
 end
