@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    authorize @user
+    authorize User
+    @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
       redirect_to @user, notice: "Successfully registered."

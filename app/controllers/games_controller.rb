@@ -22,8 +22,8 @@ class GamesController < ApplicationController
   end
 
   def create
+    authorize Game
     @game = Game.new(game_params)
-    authorize @game
     if @game.save
       redirect_to @game, notice: "Game created."
     else
