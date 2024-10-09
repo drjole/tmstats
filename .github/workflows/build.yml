@@ -1,11 +1,11 @@
-name: Deploy
+name: Build Docker image
 
 on:
     push:
 
 jobs:
     deploy:
-        name: Build and deploy
+        name: Build
         runs-on: ubuntu-latest
         concurrency: build
         steps:
