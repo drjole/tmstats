@@ -1,13 +1,17 @@
-<br>
-<div>
-  <span><strong><%= game.date %></strong>
-    <%= game.board.name %>
-    <% if game.num_generations.present? %>
-      -
-      <%= game.num_generations %>
-      Generations
-    <% end %>
-  </span>
+<details>
+  <summary>
+    <span><strong><%= game.date %></strong>
+      <%= game.players.count %>
+      <%= "Player".pluralize(game.players.count) %>
+      on
+      <%= game.board.name %>
+      <% if game.num_generations.present? %>
+        -
+        <%= game.num_generations %>
+        <%= "Generation".pluralize(game.num_generations) %>
+      <% end %>
+    </span>
+  </summary>
 
   <p>
     <strong>Players:</strong>
@@ -30,5 +34,4 @@
   <% if policy(game).update? %>
     <%= link_to "Edit this game", edit_game_path(game) %>
   <% end %>
-</div>
-<br>
+</details>
