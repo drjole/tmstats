@@ -10,4 +10,6 @@ class Game < ApplicationRecord
 
   validates :date, presence: true
   validates :num_generations, numericality: {greater_than: 0, allow_nil: true}
+
+  default_scope -> { order(:date) }
 end
