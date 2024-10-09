@@ -12,7 +12,7 @@ class GamePolicy < ApplicationPolicy
   end
 
   def destroy?
-    participant? || admin?
+    admin?
   end
 
   private
