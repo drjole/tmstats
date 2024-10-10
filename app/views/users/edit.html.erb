@@ -2,7 +2,3 @@
   <%= @user.name %></h1>
 
 <%= render "form", user: @user %>
-
-<% if policy(@user).destroy? %>
-  <%= button_to "Delete profile", @user, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-<% end %>
