@@ -40,6 +40,9 @@
 
       <%= players_form.label :victory_points %>
       <%= players_form.number_field :victory_points, min: 0, step: 1 %>
+
+      <%= players_form.label :rank %>
+      <%= players_form.number_field :rank, min: 1, max: 5, step: 1 %>
     </fieldset>
   <% end %>
 
