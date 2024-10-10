@@ -2,7 +2,7 @@ class Game < ApplicationRecord
   belongs_to :board
 
   has_and_belongs_to_many :extensions # standard:disable Rails/HasAndBelongsToMany
-  has_many :players, dependent: :delete_all
+  has_many :players, -> { order(:rank) }, dependent: :delete_all
 
   has_many :users, through: :players
 
