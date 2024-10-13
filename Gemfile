@@ -64,6 +64,7 @@ end
 
 # Other gems
 gem "pundit", "~> 2.4"
+gem "tailwindcss-rails", "~> 2.7"
 
 # Language tooling
 group :development do
