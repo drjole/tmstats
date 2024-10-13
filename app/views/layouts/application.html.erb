@@ -27,7 +27,7 @@
     <nav>
       <% if authenticated? %>
         <% if Current.user.admin? %>
-          <span style="color: orange;">ADMIN</span>
+          <span class="text-orange-500">ADMIN</span>
         <% end %>
         <% if policy(Game).index? %>
           <%= link_to "[All games]", games_path %>
@@ -42,20 +42,20 @@
         <% if policy(User).create? %>
           <%= link_to "[New user]", new_user_path %>
         <% end %>
-        <%= button_to "Logout", logout_path, method: :delete, form: { style: "display: inline;" } %>
+        <%= button_to "Logout", logout_path, method: :delete, form: { class: "inline" } %>
       <% elsif !(controller_name == "sessions" && action_name = "new") %>
         <%= link_to "Login", login_path %>
       <% end %>
     </nav>
 
     <% if flash[:alert] %>
-      <div style="color: red;">
+      <div class="text-red-500">
         <%= flash[:alert] %>
       </div>
     <% end %>
 
     <% if flash[:notice] %>
-      <div style="color: green;">
+      <div class="text-green-500">
         <%= flash[:notice] %>
       </div>
     <% end %>
