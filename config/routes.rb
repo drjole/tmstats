@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount Lookbook::Engine, at: "/lookbook"
+  end
+
   resource :session
   resources :passwords, param: :token
   resources :users
