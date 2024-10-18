@@ -2,6 +2,11 @@
   <%= render "shared/errors", form: form %>
 
   <div>
+    <%= form.label :profile_picture %>
+    <%= form.file_field :profile_picture %>
+  </div>
+
+  <div>
     <%= form.label :email_address %>
     <%= form.email_field :email_address, required: true, autocomplete: "email" %>
   </div>
