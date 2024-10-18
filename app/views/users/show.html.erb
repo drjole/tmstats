@@ -4,4 +4,4 @@
 <%= render @user %>
 
 <h1>Games</h1>
-<%= render @user.games %>
+<%= render partial: "games/games", locals: { games: @user.games } %>

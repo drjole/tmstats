@@ -7,10 +7,4 @@
   <% end %>
 <% end %>
 
-<% (@games.minimum(:date)..@games.maximum(:date)).map(&:beginning_of_month).uniq.reverse.each do |date| %>
-  <% games = @games.where(date: date.all_month) %>
-  <% if games.any? %>
-    <h2><%= l(date, format: "%B %Y") %></h2>
-    <%= render games %>
-  <% end %>
-<% end %>
+<%= render partial: "games/games", locals: { games: @games } %>
