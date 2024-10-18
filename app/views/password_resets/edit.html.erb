@@ -1,0 +1,33 @@
+<h1>Update password</h1>
+
+<div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
+  <%= form_with url: password_reset_path(params[:token]), method: :put do |form| %>
+    <div class="flex flex-col gap-2">
+      <div>
+        <%= form.label :password %>
+        <%=
+          form.password_field :password,
+                              required: true,
+                              class: "w-full rounded-lg bg-slate-800",
+                              autocomplete: "new-password",
+                              placeholder: "Enter new password"
+        %>
+      </div>
+
+      <div>
+        <%= form.label :password_confirmation %>
+        <%=
+          form.password_field :password_confirmation,
+                              class: "w-full rounded-lg bg-slate-800",
+                              required: true,
+                              autocomplete: "new-password",
+                              placeholder: "Repeat new password"
+        %>
+      </div>
+
+      <div>
+        <%= form.submit "Save", class: "py-2 px-4 bg-slate-700 hover:bg-slate-600 cursor-pointer rounded-lg font-bold" %>
+      </div>
+    </div>
+  <% end %>
+</div>

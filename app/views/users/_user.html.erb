@@ -1,8 +1,36 @@
-<%= image_tag user.profile_picture.variant(:thumb) if user.profile_picture.attached? %>
-<address>
-  <%= mail_to user.email_address %>
-  <% if policy(user).update? %>
-    |
-    <%= link_to "Edit profile", user == Current.user ? profile_edit_path : edit_user_path(user) %>
-  <% end %>
-</address>
+<% if user.profile_picture.attached? %>
+  <div class="flex justify-center">
+    <%= image_tag user.profile_picture.variant(:profile), class: "rounded-lg" %>
+  </div>
+<% end %>
+
+<p>
+  Played
+  <% games_count = user.games.count %>
+  <%= games_count %>
+  <%= "game".pluralize(games_count) %>.
+</p>
+
+<p>
+  Won
+  <% wins = user.games.select { |game| game.players.first.user == user }.count %>
+  <%= wins %>
+  <%= "time".pluralize(wins) %>
+  🔥.
+</p>
+
+<p>
+  <%
+    boards =
+      Board
+        .joins(games: :players)
+        .where(players: { user_id: user.id })
+        .group("boards.id")
+        .select("boards.*, COUNT(games.id) as games_count")
+    games_count = boards.max_by(&:games_count).games_count
+  %>
+  Played the most games on
+  <%= boards.select { |board| board.games_count == games_count }.map(&:name).join(", ") %>
+  (<%= games_count %>
+  <%= "game".pluralize(games_count) %>).
+</p>

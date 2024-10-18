@@ -1,19 +1,29 @@
-<details>
-  <summary>
-    <span><strong><%= game.date %></strong>
-      <%= game.players.count %>
-      <%= "Player".pluralize(game.players.count) %>
-      on
-      <%= game.board.name %>
+<div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
+  <details>
+    <summary>
+      <span>
+        <strong><%= l(game.date, format: "%d.%m.%Y") %></strong>
+        <%= game.board.name %>
+      </span>
+      <div>
+        <% game.players.count.times do |i| %>
+          <% green = "text-green-500" if i == game.players.map(&:user).find_index(Current.user) %>
+          <% if i == game.players.map(&:user).find_index(user) %>
+            <span class="<%= green %>"><%= user.name.first %></span>
+          <% else %>
+            <i class="bi bi-person <%= green %>"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </summary>
+
+    <p>
       <% if game.num_generations.present? %>
-        -
         <%= game.num_generations %>
         <%= "Generation".pluralize(game.num_generations) %>
       <% end %>
-    </span>
-  </summary>
+    </p>
 
-  <p>
     <strong>Players:</strong>
     <ul>
       <% game.players.each do |player| %>
@@ -23,14 +33,14 @@
             <% if player.corporation.present? %>
               (<%= player.corporation.name %>):
             <% end %>
-            <%= player.victory_points %>
-            VP
+            <strong class="ml-auto"><%= player.victory_points %>
+              VP</strong>
           </summary>
-          <div style="display: flex; gap: 1rem;">
+          <div class="flex gap-4">
             <div>
               <%= image_tag player.user.profile_picture.variant(:thumb) if player.user.profile_picture.attached? %>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="flex flex-col gap-4">
               <div>
                 <% if policy(player.user).show? %>
                   <%= link_to "Show profile", user_path(player.user) %>
@@ -41,9 +51,9 @@
         </details>
       <% end %>
     </ul>
-  </p>
 
-  <% if policy(game).update? %>
-    <%= link_to "Edit this game", edit_game_path(game) %>
-  <% end %>
-</details>
+    <% if policy(game).update? %>
+      <%= link_to "Edit this game", edit_game_path(game) %>
+    <% end %>
+  </details>
+</div>

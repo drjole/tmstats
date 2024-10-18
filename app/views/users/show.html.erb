@@ -1,7 +1,19 @@
-<h1>Profile of
-  <%= @user.name %></h1>
+<div class="flex justify-between items-center">
+  <h1><%= @user.name %></h1>
 
-<%= render @user %>
+  <p>
+    <% if policy(@user).update? %>
+      <%= link_to @user == Current.user ? %i[profile edit] : [:edit, @user] do %>
+        <i class="bi bi-pencil"></i>
+      <% end %>
+    <% end %>
+  </p>
+</div>
+
+<div class="bg-slate-900 border-2 border-white rounded-lg p-2">
+  <%= render @user %>
+</div>
 
 <h1>Games</h1>
-<%= render partial: "games/games", locals: { games: @user.games } %>
+
+<%= render partial: "games/games", locals: { games: @user.games, user: @user } %>

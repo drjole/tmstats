@@ -1,34 +1,48 @@
-<%= form_with model: user do |form| %>
-  <%= render "shared/errors", form: form %>
+<div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
+  <%= form_with model: user do |form| %>
+    <div class="flex flex-col gap-2">
+      <%= render "shared/errors", form: form %>
 
-  <div>
-    <%= form.label :profile_picture %>
-    <%= form.file_field :profile_picture %>
-  </div>
+      <div>
+        <%= form.label :email_address %>
+        <%=
+          form.email_field :email_address,
+                           class: "w-full rounded-lg bg-slate-800",
+                           required: true,
+                           autocomplete: "email"
+        %>
+      </div>
 
-  <div>
-    <%= form.label :email_address %>
-    <%= form.email_field :email_address, required: true, autocomplete: "email" %>
-  </div>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "w-full rounded-lg bg-slate-800", required: true, autocomplete: "name" %>
+      </div>
 
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true, autocomplete: "name" %>
-  </div>
+      <% if user.new_record? %>
+        <div>
+          <%= form.label :password %>
+          <%=
+            form.password_field :password,
+                                class: "w-full rounded-lg bg-slate-800",
+                                required: true,
+                                autocomplete: user.persisted? ? "current-password" : "new-password"
+          %>
+        </div>
 
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, required: true, autocomplete: user.persisted? ? "current-password" : "new-password" %>
-  </div>
+        <div>
+          <%= form.label :password_confirmation %>
+          <%=
+            form.password_field :password_confirmation,
+                                class: "w-full rounded-lg bg-slate-800",
+                                required: true,
+                                autocomplete: user.persisted? ? "current-password" : "new-password"
+          %>
+        </div>
+      <% end %>
 
-  <div>
-    <%= form.label :password_confirmation %>
-    <%=
-      form.password_field :password_confirmation,
-                          required: true,
-                          autocomplete: user.persisted? ? "current-password" : "new-password"
-    %>
-  </div>
-
-  <%= form.submit %>
-<% end %>
+      <div>
+        <%= form.submit class: "py-2 px-4 bg-slate-700 hover:bg-slate-600 cursor-pointer rounded-lg font-bold" %>
+      </div>
+    </div>
+  <% end %>
+</div>

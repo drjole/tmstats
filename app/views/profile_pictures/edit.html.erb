@@ -1,0 +1,13 @@
+<h1><%= @user.name %></h1>
+
+<%= render "form", user: @user %>
+
+<%=
+  button_to "Delete profile picture",
+            [@user, :profile_picture],
+            method: :delete,
+            class: "py-2 px-4 bg-red-700 hover:bg-red-600 cursor-pointer rounded-lg font-bold",
+            data: {
+              turbo_confirm: "Are you sure?",
+            }
+%>

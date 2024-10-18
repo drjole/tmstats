@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   resource :session
-  resources :passwords, param: :token
-  resources :users
+  resources :password_resets, only: [:new, :edit, :create, :update], param: :token
+
   resources :games
+  resources :users do
+    resource :profile_picture, only: [:edit, :update, :destroy]
+    resource :password, only: [:edit, :update]
+  end
 
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
