@@ -17,16 +17,28 @@
     <strong>Players:</strong>
     <ul>
       <% game.players.each do |player| %>
-        <li>
-          <% if policy(player.user).show? %>
-            <%= link_to player.user.name, user_path(player.user) %>
-          <% end %>
-          <% if player.corporation.present? %>
-            (<%= player.corporation.name %>):
-          <% end %>
-          <%= player.victory_points %>
-          VP
-        </li>
+        <details>
+          <summary>
+            <%= player.user.name %>
+            <% if player.corporation.present? %>
+              (<%= player.corporation.name %>):
+            <% end %>
+            <%= player.victory_points %>
+            VP
+          </summary>
+          <div style="display: flex; gap: 1rem;">
+            <div>
+              <%= image_tag player.user.profile_picture.variant(:thumb) if player.user.profile_picture.attached? %>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <% if policy(player.user).show? %>
+                  <%= link_to "Show profile", user_path(player.user) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </details>
       <% end %>
     </ul>
   </p>
