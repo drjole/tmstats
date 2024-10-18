@@ -76,3 +76,5 @@ group :development do
   gem "standard", "~> 1.39", require: false
   gem "standard-rails", "~> 1.0", require: false
 end
+
+gem "tailwindcss-rails", "~> 3.0"

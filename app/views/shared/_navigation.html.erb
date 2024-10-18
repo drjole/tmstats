@@ -1,0 +1,39 @@
+<% if authenticated? %>
+  <nav>
+    <div class="font-bold bg-slate-900 border-2 border-white rounded-lg p-2 flex flex-1 justify-evenly">
+
+      <% if policy(User).index? %>
+        <%= link_to users_path do %>
+          <i class="bi bi-people"></i>
+        <% end %>
+      <% end %>
+
+      <% if policy(User).create? %>
+        <%= link_to new_user_path do %>
+          <i class="bi bi-person-plus"></i>
+        <% end %>
+      <% end %>
+
+      <% if policy(Game).index? %>
+        <%= link_to games_path do %>
+          <i class="bi bi-list-ul"></i>
+        <% end %>
+      <% end %>
+
+      <% if policy(Game).create? %>
+        <%= link_to new_game_path do %>
+          <i class="bi bi-plus-circle"></i>
+        <% end %>
+      <% end %>
+
+      <%= link_to profile_path do %>
+        <i class="bi bi-person-circle text-green-500"></i>
+      <% end %>
+
+      <%= button_to logout_path, method: :delete, form: { class: "inline" } do %>
+        <i class="bi bi-door-open"></i>
+      <% end %>
+
+    </div>
+  </nav>
+<% end %>

@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one_attached :profile_picture do |attachable|
+    attachable.variant :profile, resize_to_limit: [200, 200]
     attachable.variant :thumb, resize_to_limit: [100, 100]
+    attachable.variant :tiny, resize_to_limit: [24, 24]
   end
 end

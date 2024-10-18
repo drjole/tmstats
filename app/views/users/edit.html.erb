@@ -1,4 +1,13 @@
-<h1>Profile of
-  <%= @user.name %></h1>
+<h1><%= @user.name %></h1>
+
+<%= image_tag @user.profile_picture.variant(:thumb) if @user.profile_picture.attached? %>
+
+<div>
+  <%= link_to "Change profile picture", [:edit, @user, :profile_picture] %>
+</div>
 
 <%= render "form", user: @user %>
+
+<div>
+  <%= link_to "Change password", [:edit, @user, :password] %>
+</div>
