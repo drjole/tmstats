@@ -54,6 +54,14 @@ Corporation.find_or_create_by! name: "Septem Tribus", extension: turmoil
 Corporation.find_or_create_by! name: "Terralabs Research", extension: turmoil
 Corporation.find_or_create_by! name: "Utopia Inveset", extension: turmoil
 
+# Prelude 2
+prelude2 = Extension.find_or_create_by! name: "Prelude 2"
+Corporation.find_or_create_by! name: "Nirgal Enterprises", extension: prelude2
+Corporation.find_or_create_by! name: "Palladin Shipping", extension: prelude2
+Corporation.find_or_create_by! name: "Sagitta Frontier Service", extension: prelude2
+Corporation.find_or_create_by! name: "Ecotec", extension: prelude2
+Corporation.find_or_create_by! name: "Spire", extension: prelude2
+
 # Turmoil Kickstarter Promo Pack
 turmoil_kickstarter_promo_pack = Extension.find_or_create_by! name: "Turmoil Kickstarter Promo Pack"
 Corporation.find_or_create_by! name: "Factorum", extension: turmoil_kickstarter_promo_pack
@@ -65,6 +73,31 @@ tm_promo_pack = Extension.find_or_create_by! name: "TM Promo Pack"
 Corporation.find_or_create_by! name: "Arcadian Communities", extension: tm_promo_pack
 Corporation.find_or_create_by! name: "Splice", extension: tm_promo_pack
 Corporation.find_or_create_by! name: "Recyclon", extension: tm_promo_pack
+
+# Big Box Promo Pack
+big_box_promo_pack = Extension.find_or_create_by! name: "Big Box Promo Pack"
+Corporation.find_or_create_by! name: "Pharmacy Union", extension: big_box_promo_pack
+Corporation.find_or_create_by! name: "Astrodrill", extension: big_box_promo_pack
+
+# Prelude 2 Promo Pack
+prelude2_promo_pack = Extension.find_or_create_by! name: "Prelude 2 Promo Pack"
+Corporation.find_or_create_by! name: "Kuiper Cooperative", extension: prelude2_promo_pack
+Corporation.find_or_create_by! name: "Tycho Magnetics", extension: prelude2_promo_pack
+
+# Utopia & Cimmeria
+utopia_cimmeria = Extension.find_or_create_by! name: "Utopia & Cimmeria"
+Board.find_or_create_by! name: "Utopia", extension: utopia_cimmeria
+Board.find_or_create_by! name: "Cimmeria", extension: utopia_cimmeria
+
+# Amazonis & Vastitas
+amazonis_vastitas = Extension.find_or_create_by! name: "Amazonis & Vastitas"
+Board.find_or_create_by! name: "Amazonis", extension: amazonis_vastitas
+Board.find_or_create_by! name: "Vastitas", extension: amazonis_vastitas
+
+# Other extensions
+Extension.find_or_create_by! name: "Seasonal Promo Pack 2021"
+Extension.find_or_create_by! name: "Seasonal Promo Pack 2022"
+Extension.find_or_create_by! name: "Seasonal Promo Pack 2023"
 
 if Rails.env.development?
   users = ["Alice", "Bob", "Charlie", "David", "Eve"]
