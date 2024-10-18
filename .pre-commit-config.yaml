@@ -14,6 +14,7 @@ repos:
             types: ["erb"]
             entry: bundle
             args: ["exec", "erb-format", "--write", "--print-width", "120"]
+            exclude: ".*\\.json\\.erb"
           - id: prettier
             name: prettier
             language: system
