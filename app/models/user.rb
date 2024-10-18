@@ -9,4 +9,8 @@ class User < ApplicationRecord
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   has_secure_password
+
+  has_one_attached :profile_picture do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 end

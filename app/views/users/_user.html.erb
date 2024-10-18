@@ -1,3 +1,4 @@
+<%= image_tag user.profile_picture.variant(:thumb) if user.profile_picture.attached? %>
 <address>
   <%= mail_to user.email_address %>
   <% if policy(user).update? %>
