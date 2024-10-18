@@ -1,0 +1,7 @@
+<% (games.minimum(:date)..games.maximum(:date)).map(&:beginning_of_month).uniq.reverse.each do |date| %>
+  <% month_games = games.where(date: date.all_month) %>
+  <% if month_games.any? %>
+    <h2><%= l(date, format: "%B %Y") %></h2>
+    <%= render month_games %>
+  <% end %>
+<% end %>
