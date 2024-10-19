@@ -98,6 +98,7 @@ Board.find_or_create_by! name: "Vastitas", extension: amazonis_vastitas
 Extension.find_or_create_by! name: "Seasonal Promo Pack 2021"
 Extension.find_or_create_by! name: "Seasonal Promo Pack 2022"
 Extension.find_or_create_by! name: "Seasonal Promo Pack 2023"
+Extension.find_or_create_by! name: "Seasonal Promo Pack 2024"
 
 if Rails.env.development?
   users = ["Alice", "Bob", "Charlie", "David", "Eve"]
