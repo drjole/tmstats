@@ -8,9 +8,9 @@ class PasswordsController < ApplicationController
     @user = User.find(params[:user_id])
     authorize @user
     if @user.update(password_params)
-      redirect_to [:edit, @user], notice: t(".success")
+      redirect_to [:edit, @user], notice: t(".notice")
     else
-      redirect_to [:edit, @user], notice: t(".error")
+      redirect_to [:edit, @user], notice: t(".alert")
     end
   end
 

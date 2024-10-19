@@ -25,7 +25,7 @@ class GamesController < ApplicationController
     authorize Game
     @game = Game.new(game_params)
     if @game.save
-      redirect_to @game, notice: "Game created."
+      redirect_to @game, notice: t(".notice")
     else
       (5 - @game.players.count).times { @game.players.build }
       render :new, status: :unprocessable_entity
@@ -36,7 +36,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     if @game.update(game_params)
-      redirect_to @game, notice: "Game edited."
+      redirect_to @game, notice: t(".notice")
     else
       (5 - @game.players.count).times { @game.players.build }
       render :edit, status: :unprocessable_entity
@@ -47,7 +47,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     authorize @game
     @game.destroy!
-    redirect_to root_path, notice: "Game deleted."
+    redirect_to root_path, notice: t(".notice")
   end
 
   private

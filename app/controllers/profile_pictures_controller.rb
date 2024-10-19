@@ -8,9 +8,9 @@ class ProfilePicturesController < ApplicationController
     @user = User.find(params[:user_id])
     authorize @user
     if @user.update(profile_picture_params)
-      redirect_to [:edit, @user], notice: t(".success")
+      redirect_to [:edit, @user], notice: t(".notice")
     else
-      redirect_to [:edit, @user], alert: t(".error")
+      redirect_to [:edit, @user], alert: t(".alert")
     end
   end
 
@@ -18,7 +18,7 @@ class ProfilePicturesController < ApplicationController
     @user = User.find(params[:user_id])
     authorize @user
     @user.profile_picture.purge_later
-    redirect_to [:edit, @user], notice: t(".success")
+    redirect_to [:edit, @user], notice: t(".notice")
   end
 
   private

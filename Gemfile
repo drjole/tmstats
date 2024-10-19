@@ -64,6 +64,7 @@ end
 
 # Other gems
 gem "pundit", "~> 2.4"
+gem "tailwindcss-rails", "~> 3.0"
 
 # Language tooling
 group :development do
@@ -77,4 +78,7 @@ group :development do
   gem "standard-rails", "~> 1.0", require: false
 end
 
-gem "tailwindcss-rails", "~> 3.0"
+# Other development gems
+group :development do
+  gem "i18n-debug", "~> 1.2", require: false
+end

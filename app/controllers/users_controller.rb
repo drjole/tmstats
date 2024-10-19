@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     authorize User
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: t(".success")
+      redirect_to @user, notice: t(".notice")
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     authorize @user
     if @user.update(user_params)
-      redirect_to [:edit, @user], notice: t(".success")
+      redirect_to [:edit, @user], notice: t(".notice")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     authorize @user
     @user.destroy!
-    redirect_to root_path, notice: t(".success")
+    redirect_to root_path, notice: t(".notice")
   end
 
   private
