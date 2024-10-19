@@ -16,4 +16,4 @@
 
 <h1>Games</h1>
 
-<%= render partial: "games/games", locals: { games: @user.games, user: @user } %>
+<%= render partial: "games/games", locals: { games: @user.games.reverse_order, user: @user } %>

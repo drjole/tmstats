@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   def index
     authorize Game
-    @games = Game.all
+    @games = Game.all.reverse_order
   end
 
   def show

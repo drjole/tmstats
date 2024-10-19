@@ -121,27 +121,32 @@ if Rails.env.development?
     "0": {
       user: User.find_by(name: "Alice"),
       corporation_id: Corporation.find_by(name: "Arcadian Communities").id,
-      victory_points: 56
+      victory_points: 56,
+      rank: 1
     },
     "1": {
       user: User.find_by(name: "Bob"),
       corporation_id: Corporation.find_by(name: "Splice").id,
-      victory_points: 47
+      victory_points: 47,
+      rank: 2
     },
     "2": {
       user: User.find_by(name: "Charlie"),
       corporation_id: Corporation.find_by(name: "Factorum").id,
-      victory_points: 48
+      victory_points: 48,
+      rank: 3
     },
     "3": {
       user: User.find_by(name: "David"),
       corporation_id: Corporation.find_by(name: "Philares").id,
-      victory_points: 60
+      victory_points: 60,
+      rank: 4
     },
     "4": {
       user: User.find_by(name: "Eve"),
       corporation_id: Corporation.find_by(name: "Cheung Shing Mars").id,
-      victory_points: 54
+      victory_points: 54,
+      rank: 5
     }
   }
 end

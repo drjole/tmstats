@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resource :password, only: [:edit, :update]
   end
 
+  resource :leaderboard, only: [:show]
+
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
   get "/register", to: "users#new"
