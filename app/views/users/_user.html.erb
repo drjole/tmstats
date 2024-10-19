@@ -5,18 +5,32 @@
 <% end %>
 
 <p>
-  Played
-  <% games_count = user.games.count %>
-  <%= games_count %>
-  <%= "game".pluralize(games_count) %>.
+  ELO:
+  <%= user.current_elo.round %>.
 </p>
 
+<% games_count = user.games.count %>
+<% wins = user.games.select { |game| game.players.first.user == user }.count %>
 <p>
-  Won
-  <% wins = user.games.select { |game| game.players.first.user == user }.count %>
+  Played
+  <%= games_count %>
+  <%= "game".pluralize(games_count) %>
+  and won
   <%= wins %>
   <%= "time".pluralize(wins) %>
   🔥.
+</p>
+
+<p>
+  That is a win rate of
+  <%= (wins / games_count.to_f * 100).round %>%.
+</p>
+
+<% average_player_count = user.games.sum { |game| game.players.count } / user.games.count.to_f %>
+<p>
+  Playes on average games with a total of
+  <%= average_player_count.round(2) %>
+  players.
 </p>
 
 <p>
