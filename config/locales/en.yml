@@ -1,2 +1,38 @@
 en:
-    success: Success!
+    games:
+        create:
+            notice: Game created.
+        update:
+            notice: Game updated.
+        destroy:
+            notice: Game deleted.
+    password_resets:
+        create:
+            notice: Password reset instructions sent (if user with that email address exists).
+        update:
+            notice: Password has been reset.
+            alert: Passwords did not match.
+    passwords:
+        update:
+            notice: Password updated.
+            alert: There was an error updating your password.
+    profile_pictures:
+        update:
+            notice: Profile picture updated.
+            alert: There was an error updating your profile picture
+        destroy:
+            notice: Profile picture deleted.
+    sessions:
+        rate_limit: Try again later.
+        create:
+            notice: Successfully logged in.
+            alert: Try another email address or password.
+        destroy:
+            notice: Successfully logged out.
+    users:
+        create:
+            notice: User created.
+        update:
+            notice: User updated.
+        destroy:
+            notice: User deleted.
