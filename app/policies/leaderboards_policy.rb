@@ -1,5 +1,5 @@
 class LeaderboardsPolicy < ApplicationPolicy
   def show?
-    true
+    admin?
   end
 end
