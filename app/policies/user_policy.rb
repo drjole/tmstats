@@ -4,11 +4,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    owner? || admin?
+    owner? || super
   end
 
   def destroy?
-    owner? || admin?
+    owner? || super
   end
 
   private
