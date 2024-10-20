@@ -8,7 +8,7 @@
           <%= form.label :email_address %>
           <%=
             form.email_field :email_address,
-                             class: "w-full rounded-lg bg-slate-800",
+                             class: "form-control",
                              required: true,
                              autofocus: true,
                              autocomplete: "username",
@@ -18,12 +18,7 @@
 
         <div>
           <%= form.label :password %>
-          <%=
-            form.password_field :password,
-                                class: "w-full rounded-lg bg-slate-800",
-                                required: true,
-                                autocomplete: "current-password"
-          %>
+          <%= form.password_field :password, class: "form-control", required: true, autocomplete: "current-password" %>
         </div>
 
         <div>

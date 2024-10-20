@@ -6,12 +6,12 @@
 
         <fieldset>
           <legend><%= form.label :date %></legend>
-          <%= form.date_field :date, class: "w-full rounded-lg bg-slate-800", required: true %>
+          <%= form.date_field :date, class: "form-control", required: true %>
         </fieldset>
 
         <fieldset>
           <legend><%= form.label :number_of_generations %></legend>
-          <%= form.number_field :num_generations, class: "w-full rounded-lg bg-slate-800", min: 0, step: 1 %>
+          <%= form.number_field :num_generations, class: "form-control", min: 0, step: 1 %>
         </fieldset>
 
         <fieldset>
@@ -48,7 +48,7 @@
                                              :id,
                                              :name,
                                              { include_blank: true },
-                                             class: "w-full rounded-lg bg-slate-800"
+                                             class: "form-control"
             %>
 
             <%= players_form.label :corporation %>
@@ -58,14 +58,14 @@
                                              :id,
                                              :name,
                                              { include_blank: true },
-                                             class: "w-full rounded-lg bg-slate-800"
+                                             class: "form-control"
             %>
 
             <%= players_form.label :victory_points %>
-            <%= players_form.number_field :victory_points, class: "w-full rounded-lg bg-slate-800", min: 0, step: 1 %>
+            <%= players_form.number_field :victory_points, class: "form-control", min: 0, step: 1 %>
 
             <%= players_form.label :rank %>
-            <%= players_form.number_field :rank, class: "w-full rounded-lg bg-slate-800", min: 1, max: 5, step: 1 %>
+            <%= players_form.number_field :rank, class: "form-control", min: 1, max: 5, step: 1 %>
           </fieldset>
         <% end %>
 
