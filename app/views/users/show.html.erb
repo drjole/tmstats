@@ -10,9 +10,9 @@
   </p>
 </div>
 
-<div class="bg-slate-900 border-2 border-white rounded-lg p-2">
+<%= render(CardComponent.new) do %>
   <%= render @user %>
-</div>
+<% end %>
 
 <h1>Games</h1>
 
