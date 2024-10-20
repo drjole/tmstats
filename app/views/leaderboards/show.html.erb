@@ -1,11 +1,13 @@
 <h1>Leaderboard</h1>
 
-<div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
-  <% @users.index_with(&:current_elo).sort_by(&:last).reverse.each_with_index do |(user, elo), index| %>
-    <p>
-      <%= index + 1 %>.
-      <%= user.name %>:
-      <%= elo.round %>
-    </p>
+<div class="my-2">
+  <%= render(CardComponent.new) do %>
+    <% @elos.each_with_index do |(user, elo), index| %>
+      <p>
+        <%= index + 1 %>.
+        <%= user.name %>:
+        <%= elo.round %>
+      </p>
+    <% end %>
   <% end %>
 </div>
