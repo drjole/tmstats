@@ -3,21 +3,25 @@ class GamePolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
   def create?
     true
   end
 
   def update?
-    participant? || admin?
-  end
-
-  def destroy?
-    admin?
+    (participant? && recent?) || super
   end
 
   private
 
   def participant?
     record.users.include? user
+  end
+
+  def recent?
+    record.date >= 3.days.ago
   end
 end
