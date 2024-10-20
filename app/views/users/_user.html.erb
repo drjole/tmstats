@@ -4,11 +4,6 @@
   </div>
 <% end %>
 
-<p>
-  ELO:
-  <%= EloService.new(user).current_elo.round %>.
-</p>
-
 <% games_count = user.games.count %>
 <% wins = user.games.select { |game| game.players.first.user == user }.count %>
 <p>
