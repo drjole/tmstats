@@ -15,6 +15,11 @@
           <% end %>
         <% end %>
 
+        <% if policy(:leaderboards).show? %>
+          <%= link_to leaderboard_path do %>
+            <i class="bi bi-trophy"></i>
+          <% end %>
+        <% end %>
         <% if policy(Game).index? %>
           <%= link_to games_path do %>
             <i class="bi bi-list-ul"></i>
