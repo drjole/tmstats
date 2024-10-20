@@ -1,6 +1,6 @@
 class PasswordPolicy < ApplicationPolicy
   def update?
-    owner? || admin?
+    owner? || super
   end
 
   private
