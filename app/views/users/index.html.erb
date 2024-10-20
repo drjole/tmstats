@@ -1,5 +1,9 @@
-<ul>
-  <% @users.each do |user| %>
-    <li><%= link_to user.name, user %></li>
+<div class="my-2">
+  <%= render(CardComponent.new) do %>
+    <ul>
+      <% @users.each do |user| %>
+        <li><%= link_to user.name, user %></li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+</div>
