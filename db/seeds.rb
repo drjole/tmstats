@@ -86,13 +86,13 @@ Corporation.find_or_create_by! name: "Tycho Magnetics", extension: prelude2_prom
 
 # Utopia & Cimmeria
 utopia_cimmeria = Extension.find_or_create_by! name: "Utopia & Cimmeria"
-Board.find_or_create_by! name: "Utopia", extension: utopia_cimmeria
-Board.find_or_create_by! name: "Cimmeria", extension: utopia_cimmeria
+Board.find_or_create_by! name: "Utopia Planitia", extension: utopia_cimmeria
+Board.find_or_create_by! name: "Terra Cimmeria", extension: utopia_cimmeria
 
 # Amazonis & Vastitas
 amazonis_vastitas = Extension.find_or_create_by! name: "Amazonis & Vastitas"
-Board.find_or_create_by! name: "Amazonis", extension: amazonis_vastitas
-Board.find_or_create_by! name: "Vastitas", extension: amazonis_vastitas
+Board.find_or_create_by! name: "Amazonis Planitia", extension: amazonis_vastitas
+Board.find_or_create_by! name: "Vastitas Borealis", extension: amazonis_vastitas
 
 # Other extensions
 Extension.find_or_create_by! name: "Seasonal Promo Pack 2021"
