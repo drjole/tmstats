@@ -5,3 +5,7 @@
 h1 {
     @apply text-4xl font-bold my-2;
 }
+
+.form-control {
+    @apply w-full rounded-lg bg-slate-800;
+}
