@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resource :profile_picture, only: [:edit, :update, :destroy]
     resource :password, only: [:edit, :update]
   end
-
   resource :leaderboard, only: [:show]
 
   get "/login", to: "sessions#new"
