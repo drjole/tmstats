@@ -1,15 +1,19 @@
 <% if flash[:alert] %>
-  <div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
-    <div class="text-red-500 text-center">
-      <%= flash[:alert] %>
-    </div>
+  <div class="my-2">
+    <%= render(CardComponent.new) do %>
+      <div class="text-red-500 text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
 <% if flash[:notice] %>
-  <div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
-    <div class="text-green-500 text-center">
-      <%= flash[:notice] %>
-    </div>
+  <div class="my-2">
+    <%= render(CardComponent.new) do %>
+      <div class="text-green-500 text-center">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
   </div>
 <% end %>

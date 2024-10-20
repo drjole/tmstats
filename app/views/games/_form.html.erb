@@ -1,76 +1,78 @@
-<div class="bg-slate-900 border-2 border-white rounded-lg my-2 p-2">
-  <%= form_with model: game do |form| %>
-    <div class="flex flex-col gap-2">
-      <%= render "shared/errors", form: form %>
+<div class="my-2">
+  <%= render(CardComponent.new) do %>
+    <%= form_with model: game do |form| %>
+      <div class="flex flex-col gap-2">
+        <%= render "shared/errors", form: form %>
 
-      <fieldset>
-        <legend><%= form.label :date %></legend>
-        <%= form.date_field :date, class: "w-full rounded-lg bg-slate-800", required: true %>
-      </fieldset>
-
-      <fieldset>
-        <legend><%= form.label :number_of_generations %></legend>
-        <%= form.number_field :num_generations, class: "w-full rounded-lg bg-slate-800", min: 0, step: 1 %>
-      </fieldset>
-
-      <fieldset>
-        <legend><%= t(:board) %></legend>
-        <div class="flex flex-col gap-1 justify-center">
-          <%= form.collection_radio_buttons :board_id, Board.all, :id, :name do |b| %>
-            <div class="flex gap-1 items-center">
-              <%= b.radio_button %><%= b.label %>
-            </div>
-          <% end %>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Extensions</legend>
-        <div class="flex flex-col gap-1 justify-center">
-          <%= form.collection_check_boxes :extension_ids, Extension.all, :id, :name do |b| %>
-            <div class="flex gap-1 items-center">
-              <%= b.check_box %><%= b.label %>
-            </div>
-          <% end %>
-        </div>
-      </fieldset>
-
-      <%= form.fields_for :players do |players_form| %>
         <fieldset>
-          <legend><strong>Player
-              <%= players_form.options[:child_index] + 1 %></strong></legend>
-
-          <%= players_form.label :user %>
-          <%=
-            players_form.collection_select :user_id,
-                                           User.all,
-                                           :id,
-                                           :name,
-                                           { include_blank: true },
-                                           class: "w-full rounded-lg bg-slate-800"
-          %>
-
-          <%= players_form.label :corporation %>
-          <%=
-            players_form.collection_select :corporation_id,
-                                           Corporation.all,
-                                           :id,
-                                           :name,
-                                           { include_blank: true },
-                                           class: "w-full rounded-lg bg-slate-800"
-          %>
-
-          <%= players_form.label :victory_points %>
-          <%= players_form.number_field :victory_points, class: "w-full rounded-lg bg-slate-800", min: 0, step: 1 %>
-
-          <%= players_form.label :rank %>
-          <%= players_form.number_field :rank, class: "w-full rounded-lg bg-slate-800", min: 1, max: 5, step: 1 %>
+          <legend><%= form.label :date %></legend>
+          <%= form.date_field :date, class: "w-full rounded-lg bg-slate-800", required: true %>
         </fieldset>
-      <% end %>
 
-      <div>
-        <%= form.submit class: "py-2 px-4 bg-slate-700 hover:bg-slate-600 cursor-pointer rounded-lg font-bold" %>
+        <fieldset>
+          <legend><%= form.label :number_of_generations %></legend>
+          <%= form.number_field :num_generations, class: "w-full rounded-lg bg-slate-800", min: 0, step: 1 %>
+        </fieldset>
+
+        <fieldset>
+          <legend><%= t(:board) %></legend>
+          <div class="flex flex-col gap-1 justify-center">
+            <%= form.collection_radio_buttons :board_id, Board.all, :id, :name do |b| %>
+              <div class="flex gap-1 items-center">
+                <%= b.radio_button %><%= b.label %>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Extensions</legend>
+          <div class="flex flex-col gap-1 justify-center">
+            <%= form.collection_check_boxes :extension_ids, Extension.all, :id, :name do |b| %>
+              <div class="flex gap-1 items-center">
+                <%= b.check_box %><%= b.label %>
+              </div>
+            <% end %>
+          </div>
+        </fieldset>
+
+        <%= form.fields_for :players do |players_form| %>
+          <fieldset>
+            <legend><strong>Player
+                <%= players_form.options[:child_index] + 1 %></strong></legend>
+
+            <%= players_form.label :user %>
+            <%=
+              players_form.collection_select :user_id,
+                                             User.all,
+                                             :id,
+                                             :name,
+                                             { include_blank: true },
+                                             class: "w-full rounded-lg bg-slate-800"
+            %>
+
+            <%= players_form.label :corporation %>
+            <%=
+              players_form.collection_select :corporation_id,
+                                             Corporation.all,
+                                             :id,
+                                             :name,
+                                             { include_blank: true },
+                                             class: "w-full rounded-lg bg-slate-800"
+            %>
+
+            <%= players_form.label :victory_points %>
+            <%= players_form.number_field :victory_points, class: "w-full rounded-lg bg-slate-800", min: 0, step: 1 %>
+
+            <%= players_form.label :rank %>
+            <%= players_form.number_field :rank, class: "w-full rounded-lg bg-slate-800", min: 1, max: 5, step: 1 %>
+          </fieldset>
+        <% end %>
+
+        <div>
+          <%= render(SubmitComponent.new(form)) %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
