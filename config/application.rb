@@ -23,5 +23,7 @@ module Tmstats
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.view_component.default_preview_layout = "component_preview"
   end
 end
