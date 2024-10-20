@@ -20,6 +20,7 @@
             <i class="bi bi-trophy"></i>
           <% end %>
         <% end %>
+
         <% if policy(Game).index? %>
           <%= link_to games_path do %>
             <i class="bi bi-list-ul"></i>
@@ -33,10 +34,10 @@
         <% end %>
 
         <%= link_to profile_path do %>
-          <i class="bi bi-person-circle text-green-500"></i>
+          <i class="bi bi-person-circle text-green-500 hover:text-green-700"></i>
         <% end %>
 
-        <%= button_to logout_path, method: :delete, form: { class: "inline" } do %>
+        <%= button_to logout_path, method: :delete, class: "hover:text-slate-400", form: { class: "inline" } do %>
           <i class="bi bi-door-open"></i>
         <% end %>
 
