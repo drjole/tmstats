@@ -6,7 +6,7 @@
 
 <p>
   ELO:
-  <%= user.current_elo.round %>.
+  <%= EloService.new(user).current_elo.round %>.
 </p>
 
 <% games_count = user.games.count %>
