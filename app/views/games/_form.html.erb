@@ -14,7 +14,7 @@
           <%= form.number_field :num_generations, class: "form-control", min: 0, step: 1 %>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="my-2">
           <legend><%= t(:board) %></legend>
           <div class="flex flex-col gap-1 justify-center">
             <%= form.collection_radio_buttons :board_id, Board.all, :id, :name do |b| %>
@@ -25,7 +25,7 @@
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="my-2">
           <legend>Extensions</legend>
           <div class="flex flex-col gap-1 justify-center">
             <%= form.collection_check_boxes :extension_ids, Extension.all, :id, :name do |b| %>
@@ -37,7 +37,7 @@
         </fieldset>
 
         <%= form.fields_for :players do |players_form| %>
-          <fieldset>
+          <fieldset class="my-2">
             <legend><strong>Player
                 <%= players_form.options[:child_index] + 1 %></strong></legend>
 
