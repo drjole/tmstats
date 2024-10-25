@@ -44,7 +44,7 @@
               <div class="flex flex-col gap-4">
                 <div>
                   <% if policy(player.user).show? %>
-                    <%= link_to "Show profile", user_path(player.user) %>
+                    <%= link_to "Show profile", player.user %>
                   <% end %>
                 </div>
               </div>
@@ -54,7 +54,7 @@
       </ul>
 
       <% if policy(game).update? %>
-        <%= link_to "Edit this game", edit_game_path(game) %>
+        <%= link_to "Edit this game", [:edit, game] %>
       <% end %>
     </details>
   <% end %>

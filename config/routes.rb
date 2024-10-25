@@ -7,14 +7,12 @@ Rails.application.routes.draw do
     resource :profile_picture, only: [:edit, :update, :destroy]
     resource :password, only: [:edit, :update]
   end
+  resource :profile, only: [:show, :edit], controller: :users
   resource :leaderboard, only: [:show]
 
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
   get "/register", to: "users#new"
-
-  get "/profile", to: "users#show"
-  get "/profile/edit", to: "users#edit"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
