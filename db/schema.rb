@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_19_194420) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_02_192658) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -72,11 +72,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_19_194420) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.date "date", null: false
+    t.datetime "time"
     t.integer "num_generations"
     t.integer "board_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "datetime"
     t.index ["board_id"], name: "index_games_on_board_id"
   end
 
@@ -88,6 +89,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_19_194420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rank"
+    t.integer "elo_impact"
     t.index ["corporation_id"], name: "index_players_on_corporation_id"
     t.index ["game_id"], name: "index_players_on_game_id"
     t.index ["user_id"], name: "index_players_on_user_id"

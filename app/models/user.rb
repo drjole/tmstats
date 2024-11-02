@@ -15,6 +15,12 @@ class User < ApplicationRecord
   has_one_attached :profile_picture do |attachable|
     attachable.variant :profile, resize_to_limit: [200, 200]
     attachable.variant :thumb, resize_to_limit: [100, 100]
-    attachable.variant :tiny, resize_to_limit: [24, 24]
+    attachable.variant :tiny, resize_to_limit: [20, 20]
+  end
+
+  def elo
+    return nil unless ranked?
+
+    players.last.elo if players.any?
   end
 end

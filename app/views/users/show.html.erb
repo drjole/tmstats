@@ -4,7 +4,7 @@
   <p>
     <% if policy(@user).update? %>
       <%= link_to @user == Current.user ? %i[edit profile] : [:edit, @user] do %>
-        <i class="bi bi-pencil"></i>
+        <%= icon("pencil") %>
       <% end %>
     <% end %>
   </p>
