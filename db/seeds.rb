@@ -110,7 +110,7 @@ if Rails.env.development?
 
   User.find_by(name: "Alice").update!(admin: true)
 
-  Game.create! date: Date.new(2024, 10, 7), num_generations: 6, board: Board.find_by(name: "Elysium"), extensions: [
+  Game.create! time: Date.new(2024, 10, 7).beginning_of_day, num_generations: 6, board: Board.find_by(name: "Elysium"), extensions: [
     Extension.find_by(name: "Base Game"),
     Extension.find_by(name: "Corporate Era"),
     Extension.find_by(name: "Prelude"),

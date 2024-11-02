@@ -1,6 +1,6 @@
 <% if user.profile_picture.attached? %>
   <div class="flex justify-center">
-    <%= image_tag user.profile_picture.variant(:profile), class: "rounded-lg" %>
+    <%= render partial: "profile_picture", locals: { user: user, variant: :profile } %>
   </div>
 <% end %>
 

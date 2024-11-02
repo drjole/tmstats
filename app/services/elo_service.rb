@@ -7,55 +7,40 @@ class EloService
   end
 
   def current_elo
-    Rails.cache.fetch("#{@user.cache_key_with_version}/elo/current_elo") do
-      elo(@user.games.ranked.last)
-    end
+    elo(@user.games.ranked.last)
   end
 
-  def elo(game, memo = nil)
+  def elo(game)
     return nil unless @user.ranked?
 
-    memo ||= {}
-    memo[@user] ||= {}
+    return STARTING_ELO if game.blank?
 
-    result = memo.dig(@user, game)
-    return result if result.present?
+    my_player = game.player(@user)
+    return my_player.elo if my_player.elo_impact.present?
 
-    if game.blank?
-      memo[@user][game] = STARTING_ELO
-      return STARTING_ELO
-    end
+    my_previous_game = previous_game(game)
+    my_elo = elo(my_previous_game)
+    elo_impact = 0
 
-    my_player = game.players.find { |player| player.user == @user }
-    my_game_index = @user.games.ranked.find_index(game)
-    my_previous_game = if my_game_index == 0
-      nil
-    else
-      @user.games.ranked[my_game_index - 1]
-    end
-    my_elo = elo(my_previous_game, memo)
-    total_elo_adjustment = 0
+    game.players.excluding(my_player).each do |player|
+      their_elo_service = EloService.new(player.user)
+      their_previous_game = their_elo_service.previous_game(game)
+      their_elo = their_elo_service.elo(their_previous_game)
 
-    game.players.reject { |player| player.user == @user }.each do |player|
-      their_game_index = player.user.games.ranked.find_index(game)
-      their_previous_game = if their_game_index == 0
-        nil
-      else
-        player.user.games.ranked[their_game_index - 1]
-      end
-
-      their_elo = EloService.new(player.user).elo(their_previous_game, memo)
       q_a = 10.0**(my_elo / 400.0)
       q_b = 10.0**(their_elo / 400.0)
       e_a = q_a / (q_a + q_b)
       s_a = (my_player.rank < player.rank) ? 1 : 0
-      elo_adjustment = K * (s_a - e_a)
+      player_elo_impact = K * (s_a - e_a)
 
-      total_elo_adjustment += elo_adjustment
+      elo_impact += player_elo_impact.round
     end
 
-    result = my_elo + total_elo_adjustment
-    memo[@user][game] = result
-    result
+    my_player.update!(elo_impact: elo_impact)
+    my_elo + elo_impact
+  end
+
+  def previous_game(game)
+    @user.games.ranked.where.not(id: game.id).where(time: ...game.time).last
   end
 end

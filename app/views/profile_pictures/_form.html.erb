@@ -5,7 +5,7 @@
         <%= render "shared/errors", form: form %>
 
         <div>
-          <%= image_tag user.profile_picture.variant(:thumb) if user.profile_picture.attached? %>
+          <%= render partial: "profile_picture", locals: { user: user, variant: :thumb } %>
         </div>
 
         <div>

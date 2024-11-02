@@ -5,40 +5,42 @@
 
         <% if policy(User).index? %>
           <%= link_to User do %>
-            <i class="bi bi-people"></i>
+            <%= icon("people") %>
           <% end %>
         <% end %>
 
         <% if policy(User).create? %>
           <%= link_to %i[new user] do %>
-            <i class="bi bi-person-plus"></i>
+            <%= icon("person-plus") %>
           <% end %>
         <% end %>
 
         <% if policy(:leaderboards).show? %>
           <%= link_to :leaderboard do %>
-            <i class="bi bi-trophy"></i>
+            <%= icon("trophy") %>
           <% end %>
         <% end %>
 
         <% if policy(Game).index? %>
           <%= link_to Game do %>
-            <i class="bi bi-list-ul"></i>
+            <%= icon("list-ul") %>
           <% end %>
         <% end %>
 
         <% if policy(Game).create? %>
           <%= link_to %i[new game] do %>
-            <i class="bi bi-plus-circle"></i>
+            <%= icon("plus-circle") %>
           <% end %>
         <% end %>
 
         <%= link_to :profile do %>
-          <i class="bi bi-person-circle text-green-500 hover:text-green-700"></i>
+          <div class="text-green-500 hover:text-green-700">
+            <%= icon("person-circle") %>
+          </div>
         <% end %>
 
         <%= button_to :logout, method: :delete, class: "hover:text-slate-400", form: { class: "inline" } do %>
-          <i class="bi bi-door-open"></i>
+          <%= icon("door-open") %>
         <% end %>
 
       </div>

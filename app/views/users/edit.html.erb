@@ -1,6 +1,6 @@
 <h1><%= @user.name %></h1>
 
-<%= image_tag @user.profile_picture.variant(:thumb) if @user.profile_picture.attached? %>
+<%= render partial: "profile_picture", locals: { user: user, variant: :thumb } %>
 
 <div>
   <%= link_to "Change profile picture", [:edit, @user, :profile_picture] %>

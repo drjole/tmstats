@@ -22,6 +22,6 @@ class GamePolicy < ApplicationPolicy
   end
 
   def recent?
-    record.date >= 3.days.ago
+    record.time >= 3.days.ago
   end
 end

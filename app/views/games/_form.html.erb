@@ -5,8 +5,8 @@
         <%= render "shared/errors", form: form %>
 
         <fieldset>
-          <legend><%= form.label :date %></legend>
-          <%= form.date_field :date, class: "form-control", required: true %>
+          <legend><%= form.label :time %></legend>
+          <%= form.datetime_local_field :time, class: "form-control", required: true %>
         </fieldset>
 
         <fieldset>
