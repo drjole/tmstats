@@ -11,7 +11,7 @@
     end
 %>
 <% if user.profile_picture.attached? %>
-  <%= image_tag user.profile_picture.variant(resize_to_limit: [size, size]) %>
+  <%= image_tag user.profile_picture.variant(resize_to_limit: [512, 512]), width: size, height: size %>
 <% else %>
   <svg width="<%= size %>" height="<%= size %>" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <!-- Background -->
