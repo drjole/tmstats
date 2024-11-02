@@ -2,12 +2,12 @@
 service: tmstats
 
 # Name of the container image.
-image: your-user/tmstats
+image: drjole/tmstats
 
 # Deploy to these servers.
 servers:
     web:
-        - 192.168.0.1
+        - jole.dev
     # job:
     #   hosts:
     #     - 192.168.0.1
@@ -15,15 +15,15 @@ servers:
 
 # Enable SSL auto certification via Let's Encrypt (and allow for multiple apps on one server).
 # Set ssl: false if using something like Cloudflare to terminate SSL (but keep host!).
-proxy:
-    ssl: true
-    host: app.example.com
+proxy: false
+#     ssl: true
+#     host: app.example.com
 
 # Credentials for your image host.
 registry:
     # Specify the registry server, if you're not using Docker Hub
-    # server: registry.digitalocean.com / ghcr.io / ...
-    username: your-user
+    server: ghcr.io
+    username: drjole
 
     # Always use an access token rather than real password when possible.
     password:
@@ -83,9 +83,8 @@ builder:
     #   - GITHUB_TOKEN
     #   - RAILS_MASTER_KEY
 # Use a different ssh user than root
-# ssh:
-#   user: app
-
+ssh:
+    user: jole
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
 #   db:
