@@ -9,5 +9,10 @@
         <%= elo %>
       </p>
     <% end %>
+
+    <div class="my-4 text-xs">Play at least 5 games to appear on the leaderboard!</div>
+    <hr/>
+
+    <%= turbo_frame_tag :elo, src: chart_elo_path %>
   <% end %>
 </div>

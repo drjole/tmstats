@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :chart do
     get "user_elo/:user_id", to: "user_elo", as: :user_elo
+    get :elo
   end
 
   get "/login", to: "sessions#new"
