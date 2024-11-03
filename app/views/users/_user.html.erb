@@ -43,3 +43,5 @@
   (<%= games_count %>
   <%= "game".pluralize(games_count) %>).
 </p>
+
+<%= turbo_frame_tag :user_elo, src: chart_user_elo_path(user) %>

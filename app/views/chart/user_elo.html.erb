@@ -1,0 +1,9 @@
+<%= turbo_frame_tag :user_elo do %>
+  <span class="font-bold">Rating progression</span>
+  <div
+    data-controller="user-elo-chart"
+    data-action="resize@window->user-elo-chart#resize"
+    data-user-elo-chart-data-value="<%= @data.to_json %>"
+    class="w-auto h-48 my-4"
+  ></div>
+<% end %>
