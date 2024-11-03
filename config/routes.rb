@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit], controller: :users
   resource :leaderboard, only: [:show]
 
+  namespace :chart do
+    get "user_elo/:user_id", to: "user_elo", as: :user_elo
+  end
+
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
   get "/register", to: "users#new"

@@ -1,4 +1,4 @@
-<% games.group_by { |game| game.time.beginning_of_month }.each do |date, games| %>
+<% games.group_by { |game| game.time.beginning_of_month }.each do |date, month_games| %>
   <span><%= l(date, format: "%B %Y") %></span>
-  <%= render games, user: user %>
+  <%= render month_games, user: user %>
 <% end %>
