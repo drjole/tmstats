@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="user-elo-chart"
+// Connects to data-controller="elo-chart"
 export default class extends Controller {
     static values = {
-        data: Array,
+        data: Object,
     };
 
     connect() {
@@ -19,9 +19,11 @@ export default class extends Controller {
                     },
                 },
             },
+            legend: {
+                selector: true,
+            },
             grid: {
                 containLabel: true,
-                top: "10px",
                 right: "0",
                 left: "left",
             },
@@ -39,18 +41,14 @@ export default class extends Controller {
                 min: (value) => Math.trunc((value.min - 1000) / 30) * 30 + 1000 - 30,
                 max: (value) => Math.trunc((value.max - 1000) / 30) * 30 + 1000 + 30,
             },
-            dataset: {
-                source: this.dataValue,
-            },
-            series: {
-                type: "line",
-                step: "end",
-                name: "Rating",
-                encode: {
-                    x: "time",
-                    y: "Rating",
-                },
-            },
+            series: Object.keys(this.dataValue).map((userId) => {
+                return {
+                    data: this.dataValue[userId].map((row) => Object.values(row).slice(0, 2)),
+                    type: "line",
+                    step: "end",
+                    name: this.dataValue[userId][0].user_name,
+                };
+            }),
         };
 
         this.chart = echarts.init(this.element, "dark");

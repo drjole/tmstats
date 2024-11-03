@@ -1,8 +1,19 @@
 class ChartController < ApplicationController
   def user_elo
     authorize :chart
-    @data = User.find(params[:user_id]).players.includes(game: :players).select { |player| player.game.ranked? }.map do |player|
-      {time: player.game.time, Rating: player.elo, game_id: player.game.id}
+    @data = user_data(User.find(params[:user_id]))
+  end
+
+  def elo
+    authorize :chart
+    @data = User.ranked.placed.map { |user| [user.id, user_data(user)] }.to_h
+  end
+
+  private
+
+  def user_data(user)
+    user.games.includes(players: :user).ranked.map do |game|
+      {time: game.time, Rating: game.player(user).elo, game_id: game.id, user_name: user.name}
     end
   end
 end
