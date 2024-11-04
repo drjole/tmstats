@@ -53,6 +53,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:date, :num_generations, :board_id, extension_ids: [], players_attributes: [:id, :user_id, :corporation_id, :victory_points, :rank])
+    params.require(:game).permit(:time, :num_generations, :board_id, extension_ids: [], players_attributes: [:id, :user_id, :corporation_id, :victory_points, :rank])
   end
 end

@@ -1,6 +1,6 @@
 <div class="my-2" id="<%= dom_id(game) %>">
   <%= render(CardComponent.new) do %>
-    <details>
+    <details data-controller="details" data-action="turbo:before-morph-attribute->details#keepOpen">
       <summary>
         <span>
           <strong><%= l(game.time, format: "%d.%m.%Y") %></strong>
@@ -36,7 +36,9 @@
               </div>
               <% if game.ranked? %>
                 <div>
-                  <% if player.elo_impact.positive? %>
+                  <% if player.elo_impact.blank? %>
+                    <%= icon("dash") %>
+                  <% elsif player.elo_impact.positive? %>
                     <div class="text-green-500">
                       <%= icon("arrow-up") %><%= player.elo_impact.abs %>
                     </div>
