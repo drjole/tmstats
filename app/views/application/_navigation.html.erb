@@ -39,42 +39,38 @@
           </div>
         <% end %>
 
-        <div data-controller="modal">
-          <dialog
-            class="bg-transparent text-white backdrop:bg-gray-800/70"
-            data-modal-target="dialog"
-            data-action="click->modal#close"
-          >
-            <div class="w-full h-full" data-action="click->modal#stopClickPropagation">
-              <%= render CardComponent.new do %>
-                <div class="flex flex-col gap-2 justify-center items-center">
-                  <div>Continue with log out?</div>
-                  <div class="flex gap-2">
-                    <form method="dialog">
-                      <button class="py-2 px-4 bg-slate-700 hover:bg-slate-600 cursor-pointer rounded-lg font-bold">
-                        Cancel
-                      </button>
-                    </form>
-                    <%=
-                      button_to :logout,
-                                method: :delete,
-                                class: "py-2 px-4 bg-red-700 hover:bg-red-600 cursor-pointer rounded-lg font-bold",
-                                form: {
-                                  class: "inline",
-                                } do
-                    %>
-                      Log out
-                    <% end %>
-                  </div>
+        <%= render ModalComponent.new(id: "log-out-modal") do |modal| %>
+          <%= modal.with_body do %>
+            <%= render CardComponent.new do %>
+              <div class="flex flex-col gap-2 justify-center items-center">
+                <div>Continue with log out?</div>
+                <div class="flex gap-2">
+                  <form method="dialog">
+                    <button class="py-2 px-4 bg-slate-700 hover:bg-slate-600 cursor-pointer rounded-lg font-bold">
+                      Cancel
+                    </button>
+                  </form>
+                  <%=
+                    button_to :logout,
+                              method: :delete,
+                              class: "py-2 px-4 bg-red-700 hover:bg-red-600 cursor-pointer rounded-lg font-bold",
+                              form: {
+                                class: "inline",
+                              } do
+                  %>
+                    Log out
+                  <% end %>
                 </div>
-              <% end %>
-            </div>
-          </dialog>
-          <button class="hover:text-slate-400" data-action="modal#show">
-            <%= icon("door-open") %>
-          </button>
-        </div>
+              </div>
+            <% end %>
+          <% end %>
 
+          <%= modal.with_opener do %>
+            <button class="hover:text-slate-400">
+              <%= icon("door-open") %>
+            </button>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </nav>

@@ -4,19 +4,15 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static targets = ["dialog"];
 
-    connect() {}
-
     show() {
         this.dialogTarget.showModal();
     }
 
     close() {
-        console.log("close");
         this.dialogTarget.close();
     }
 
     stopClickPropagation(event) {
-        console.log(event);
         event.stopPropagation();
     }
 }

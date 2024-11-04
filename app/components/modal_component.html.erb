@@ -1,0 +1,19 @@
+<div data-controller="modal">
+  <dialog
+    id="<%= @id %>"
+    class="
+      bg-transparent text-white backdrop:bg-gray-800/70 transition duration-500 starting:opacity-0 translate-y-0
+      starting:-translate-y-1/4
+    "
+    data-modal-target="dialog"
+    data-action="click->modal#close"
+    data-turbo-permanent
+  >
+    <div class="w-full h-full" data-action="click->modal#stopClickPropagation">
+      <%= body %>
+    </div>
+  </dialog>
+  <div data-action="click->modal#show">
+    <%= opener %>
+  </div>
+</div>

@@ -14,6 +14,8 @@ class Game < ApplicationRecord
 
   accepts_nested_attributes_for :players, reject_if: :all_blank
 
+  broadcasts_refreshes
+
   after_commit do
     Player.update_all elo_impact: nil
     User.find_each do |user|
