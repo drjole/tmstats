@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-    @apply text-4xl font-bold my-2;
+@layer base {
+    h1 {
+        @apply text-4xl font-bold my-2;
+    }
+
+    a {
+        @apply underline hover:text-slate-400;
+    }
 }
 
-a {
-    @apply underline hover:text-slate-400;
-}
-
-.form-control {
-    @apply w-full rounded-lg bg-slate-800;
+@layer components {
+    .form-control {
+        @apply w-full rounded-lg bg-slate-800;
+    }
 }
