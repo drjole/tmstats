@@ -6,7 +6,7 @@
 <h1>All games</h1>
 
 <% if @games.none? %>
-  There are not games yet.
+  <p>There are not games yet.</p>
   <% if policy(Game).create? %>
     <%= link_to "Create a new one.", %i[new game] %>
   <% end %>

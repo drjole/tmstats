@@ -10,10 +10,17 @@
   </p>
 </div>
 
-<%= render(CardComponent.new) do %>
-  <%= render @user %>
+<% if @user.games.none? %>
+  <p>This user has not participated in any games yet.</p>
+  <% if policy(Game).create? %>
+    <%= link_to "Create a new one.", %i[new game] %>
+  <% end %>
+<% else %>
+  <%= render(CardComponent.new) do %>
+    <%= render @user %>
+  <% end %>
+
+  <h1>Games</h1>
+
+  <%= render partial: "games/games", locals: { games: @user.games.reverse_order, user: @user } %>
 <% end %>
-
-<h1>Games</h1>
-
-<%= render partial: "games/games", locals: { games: @user.games.reverse_order, user: @user } %>
