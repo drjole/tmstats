@@ -24,8 +24,8 @@ export default class extends Controller {
             },
             grid: {
                 containLabel: true,
-                right: "0",
-                left: "left",
+                right: 20,
+                left: 20,
             },
             dataZoom: {
                 filterMode: "none",
