@@ -10,7 +10,7 @@ class Game < ApplicationRecord
   validates :num_generations, numericality: {greater_than: 0, allow_nil: true}
 
   default_scope -> { order(time: :asc) }
-  scope :ranked, -> { joins(:users).group("games.id").having("COUNT(users.id) = COUNT(CASE WHEN users.ranked = true THEN 1 END)") }
+  scope :ranked, -> { where(ranked: true) }
 
   accepts_nested_attributes_for :players, reject_if: :all_blank
 
@@ -21,10 +21,6 @@ class Game < ApplicationRecord
     User.find_each do |user|
       EloService.new(user).current_elo
     end
-  end
-
-  def ranked?
-    users.all?(&:ranked?)
   end
 
   def player(user)

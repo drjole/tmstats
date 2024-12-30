@@ -11,8 +11,6 @@ class EloService
   end
 
   def elo(game)
-    return nil unless @user.ranked?
-
     return STARTING_ELO if game.blank?
 
     my_player = game.player(@user)
