@@ -6,7 +6,7 @@ class ChartController < ApplicationController
 
   def elo
     authorize :chart
-    @data = User.ranked.placed.map { |user| [user.id, user_data(user)] }.to_h
+    @data = User.placed.map { |user| [user.id, user_data(user)] }.to_h
   end
 
   private

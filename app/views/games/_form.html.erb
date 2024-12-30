@@ -14,6 +14,12 @@
           <%= form.number_field :num_generations, class: "form-control", min: 0, step: 1 %>
         </fieldset>
 
+        <fieldset>
+          <legend><%= form.label :ranked %>
+            <%= icon("trophy") %></legend>
+          <%= form.check_box :ranked, required: true %>
+        </fieldset>
+
         <fieldset class="my-2">
           <legend><%= t(:board) %></legend>
           <div class="flex flex-col gap-1 justify-center">
