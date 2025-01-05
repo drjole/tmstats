@@ -1,0 +1,22 @@
+<% service = CorporationStatsService.new(Corporation.where(id: corporation.id)) %>
+<% picks = service.picks[corporation] %>
+<% wins = service.wins[corporation] %>
+<p>
+  Was picked in
+  <%= picks %>
+  <%= "game".pluralize(picks) %>
+  and won
+  <%= wins %>
+  <%= "time".pluralize(wins) %>
+  🔥.
+</p>
+
+<p>
+  That is a win rate of
+  <%= number_to_percentage(100 * service.win_rate[corporation], precision: 0) %>.
+</p>
+
+<p>
+  The average rank is
+  <%= service.average_rank[corporation].round(2) %>.
+</p>

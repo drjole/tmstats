@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :edit, :create, :update], param: :token
 
   resources :games
+  resources :corporations, only: [:show]
   resources :users do
     resource :profile_picture, only: [:edit, :update, :destroy]
     resource :password, only: [:edit, :update]
