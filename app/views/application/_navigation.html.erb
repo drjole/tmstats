@@ -27,10 +27,12 @@
           <% end %>
         <% end %>
 
-        <%= link_to :profile do %>
-          <div class="text-green-500 hover:text-green-700">
-            <%= icon("person-circle") %>
-          </div>
+        <% if policy(Current.user).show? %>
+          <%= link_to :profile do %>
+            <div class="text-green-500 hover:text-green-700">
+              <%= icon("person-circle") %>
+            </div>
+          <% end %>
         <% end %>
 
         <%= render ModalComponent.new(id: "log-out-modal") do |modal| %>

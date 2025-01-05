@@ -32,7 +32,11 @@
             <div class="flex justify-between">
               <div class="flex items-center gap-2">
                 <%= render partial: "users/profile_picture", locals: { user: player.user, variant: :tiny } %>
-                <strong><%= link_to player.user.name, player.user %></strong>
+                <strong>
+                  <% if policy(player.user).show? %>
+                    <%= link_to player.user.name, player.user %>
+                  <% end %>
+                </strong>
               </div>
               <% if game.ranked? %>
                 <div>
@@ -55,7 +59,11 @@
             <div class="flex justify-between">
               <div>
                 <% if player.corporation.present? %>
-                  <%= player.corporation.name %>
+                  <% if policy(player.corporation).show? %>
+                    <%= link_to player.corporation.name, player.corporation %>
+                  <% else %>
+                    <%= player.corporation.name %>
+                  <% end %>
                 <% end %>
               </div>
               <div>
