@@ -1,0 +1,17 @@
+<h1>Corporation Stats</h1>
+<%= render CardComponent.new do %>
+  <div class="grid grid-cols-[auto_1fr_1fr_1fr_1fr] gap-x-4 overflow-scroll *:whitespace-nowrap">
+    <div class="font-bold"><%= sort_link("Corporation", :name) %></div>
+    <div class="font-bold"><%= sort_link("Picks", :picks) %></div>
+    <div class="font-bold"><%= sort_link("Wins", :wins) %></div>
+    <div class="font-bold"><%= sort_link("Win Rate", :win_rate) %></div>
+    <div class="font-bold"><%= sort_link("Average Rank", :average_rank) %></div>
+    <% @corporations.each do |corporation| %>
+      <div><%= corporation.name %></div>
+      <div><%= @service.picks[corporation] %></div>
+      <div><%= @service.wins[corporation] %></div>
+      <div><%= number_to_percentage(100.0 * @service.win_rate[corporation], precision: 0) %></div>
+      <div><%= (@service.average_rank[corporation].presence || 0).round(2) %></div>
+    <% end %>
+  </div>
+<% end %>

@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get :elo
   end
 
+  namespace :stats do
+    resource :corporations, only: [:show]
+  end
+
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
   get "/register", to: "users#new"
