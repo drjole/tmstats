@@ -1,7 +1,7 @@
 <% if flash[:alert] %>
   <div class="my-2">
     <%= render(CardComponent.new) do %>
-      <div class="text-red-500 text-center">
+      <div class="text-center text-red-500">
         <%= flash[:alert] %>
       </div>
     <% end %>
@@ -11,7 +11,7 @@
 <% if flash[:notice] %>
   <div class="my-2">
     <%= render(CardComponent.new) do %>
-      <div class="text-green-500 text-center">
+      <div class="text-center text-green-500">
         <%= flash[:notice] %>
       </div>
     <% end %>
