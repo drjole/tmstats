@@ -1,0 +1,13 @@
+<h1><%= @corporation.name %></h1>
+
+<% if @corporation.games.none? %>
+  <p>This corporation was not picked in any games yet.</p>
+<% else %>
+  <%= render(CardComponent.new) do %>
+    <%= render @corporation %>
+  <% end %>
+
+  <h1>Games</h1>
+
+  <%= render partial: "games/games", locals: { games: @corporation.games.reverse_order, user: nil } %>
+<% end %>

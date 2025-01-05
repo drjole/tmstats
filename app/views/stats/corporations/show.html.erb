@@ -7,7 +7,7 @@
     <div class="font-bold"><%= sort_link("Win Rate", :win_rate) %></div>
     <div class="font-bold"><%= sort_link("Average Rank", :average_rank) %></div>
     <% @corporations.each do |corporation| %>
-      <div><%= corporation.name %></div>
+      <div><%= link_to corporation.name, corporation %></div>
       <div><%= @service.picks[corporation] %></div>
       <div><%= @service.wins[corporation] %></div>
       <div><%= number_to_percentage(100.0 * @service.win_rate[corporation], precision: 0) %></div>
