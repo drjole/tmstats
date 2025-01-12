@@ -73,7 +73,8 @@ group :development do
 
   gem "erb_lint", "~> 0.6", require: false
 
-  gem "ruby-lsp", "~> 0.17", require: false
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rails", require: false
 
   gem "standard", "~> 1.39", require: false
   gem "standard-rails", "~> 1.0", require: false
