@@ -24,6 +24,13 @@ module Tmstats
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.mission_control.jobs.base_controller_class = "MissionControlController"
+
+    config.cache_store = :solid_cache_store
+
+    config.active_job.queue_adapter = :solid_queue
+    config.solid_queue.connects_to = {database: {writing: :queue}}
+
     config.view_component.default_preview_layout = "component_preview"
   end
 end

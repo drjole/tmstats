@@ -32,11 +32,11 @@ module Authentication
 
   def request_authentication
     session[:return_to_after_authenticating] = request.url
-    redirect_to login_url
+    redirect_to login_path
   end
 
-  def after_authentication_url
-    session.delete(:return_to_after_authenticating) || root_url
+  def after_authentication_path
+    session.delete(:return_to_after_authenticating) || root_path
   end
 
   def start_new_session_for(user)
