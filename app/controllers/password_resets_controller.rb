@@ -15,14 +15,14 @@ class PasswordResetsController < ApplicationController
       PasswordsMailer.reset(user).deliver_later
     end
 
-    redirect_to login_url, notice: t(".notice")
+    redirect_to login_path, notice: t(".notice")
   end
 
   def update
     if @user.update(params.permit(:password, :password_confirmation))
-      redirect_to login_url, notice: t(".notice")
+      redirect_to login_path, notice: t(".notice")
     else
-      redirect_to edit_password_reset_url(params[:token]), alert: t(".alert")
+      redirect_to edit_password_reset_path(params[:token]), alert: t(".alert")
     end
   end
 
@@ -31,6 +31,6 @@ class PasswordResetsController < ApplicationController
   def set_user_by_token
     @user = User.find_by_password_reset_token!(params[:token])
   rescue ActiveSupport::MessageVerifier::InvalidSignature
-    redirect_to new_password_reset_url, alert: t(".alert")
+    redirect_to new_password_reset_path, alert: t(".alert")
   end
 end

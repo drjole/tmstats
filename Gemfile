@@ -63,6 +63,7 @@ group :test do
 end
 
 # Other gems
+gem "mission_control-jobs", "~> 1.0"
 gem "pundit", "~> 2.4"
 gem "tailwindcss-rails", "~> 3.0"
 gem "view_component", "~> 3.18"
