@@ -1,19 +1,19 @@
 {
-    "name": "tmstats",
-    "version": "1.0.0",
-    "description": "This README would normally document whatever steps are necessary to get the application up and running.",
-    "main": "index.js",
-    "directories": {
-        "lib": "lib",
-        "test": "test"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "prettier": "^3.3.3",
-        "tailwindcss-class-sorter-erb": "^0.2.0"
-    }
+  "name": "tmstats",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "tailwindcss-class-sorter-erb": "^0.6"
+  }
 }

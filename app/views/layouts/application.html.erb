@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html class="bg-mars bg-cover bg-fixed bg-center bg-no-repeat text-[20px] text-white">
+<%# TODO: How to set a custom background image using tailwind v4 config? %>
+<html
+  class="bg-cover bg-fixed bg-center bg-no-repeat text-[20px] text-white"
+  style="background-image: url(<%= image_path("mars.jpg") %>);"
+>
   <head>
     <title><%= content_for(:title) || "TM Stats" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
