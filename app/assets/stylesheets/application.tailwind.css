@@ -1,19 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/forms";
 
 @layer base {
-    h1 {
-        @apply text-4xl font-bold my-2;
-    }
+  h1 {
+    @apply text-4xl font-bold my-2;
+  }
 
-    a {
-        @apply underline hover:text-slate-400;
-    }
+  a {
+    @apply underline hover:text-slate-400;
+  }
 }
 
 @layer components {
-    .form-control {
-        @apply w-full rounded-lg bg-slate-800;
-    }
+  .form-control {
+    @apply w-full rounded-lg bg-slate-800;
+  }
 }

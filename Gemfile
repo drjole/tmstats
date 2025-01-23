@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-# Use main development branch of Rails
-gem "rails", github: "rails/rails", branch: "main"
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -14,6 +14,8 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -48,7 +50,7 @@ group :development, :test do
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
+  # gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
@@ -65,23 +67,18 @@ end
 # Other gems
 gem "mission_control-jobs", "~> 1.0"
 gem "pundit", "~> 2.4"
-gem "tailwindcss-rails", "~> 3.0"
 gem "view_component", "~> 3.18"
+
+# TODO: Remove this as soon as tailwindcss-rails is at v4
+gem "tailwindcss-ruby", "~> 4.0"
 
 # Language tooling
 group :development do
   gem "erb-formatter", require: false, git: "https://github.com/pelletencate/erb-formatter", ref: "99601be"
-
-  gem "erb_lint", "~> 0.6", require: false
-
+  gem "i18n-debug"
+  gem "i18n-tasks", require: false
   gem "ruby-lsp", require: false
   gem "ruby-lsp-rails", require: false
-
-  gem "standard", "~> 1.39", require: false
-  gem "standard-rails", "~> 1.0", require: false
-end
-
-# Other development gems
-group :development do
-  gem "i18n-debug", "~> 1.2", require: false
+  gem "standard", require: false
+  gem "standard-rails", require: false
 end
