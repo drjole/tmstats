@@ -17,7 +17,7 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
-    (5 - @game.players.count).times { @game.players.build }
+    (5 - @game.players.size).times { @game.players.build }
     authorize @game
   end
 
@@ -27,7 +27,7 @@ class GamesController < ApplicationController
     if @game.save
       redirect_to @game, notice: t(".notice")
     else
-      (5 - @game.players.count).times { @game.players.build }
+      (5 - @game.players.size).times { @game.players.build }
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,7 +38,7 @@ class GamesController < ApplicationController
     if @game.update(game_params)
       redirect_to @game, notice: t(".notice")
     else
-      (5 - @game.players.count).times { @game.players.build }
+      (5 - @game.players.size).times { @game.players.build }
       render :edit, status: :unprocessable_entity
     end
   end
