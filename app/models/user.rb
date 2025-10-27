@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :games, through: :players
 
   scope :placed, -> { joins(:games).where(games: Game.ranked).group("users.id").having("COUNT(games.id) >= 5") }
-  scope :unplaced, -> { ranked.where.not(id: User.placed) }
 
   validates :email_address, presence: true, uniqueness: true
 
