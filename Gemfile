@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.1"
+gem "rails", "~> 8.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -67,7 +67,7 @@ end
 # Other gems
 gem "mission_control-jobs", "~> 1.0"
 gem "pundit", "~> 2.4"
-gem "view_component", "~> 3.18"
+gem "view_component", "~> 4.1"
 
 # TODO: Remove this as soon as tailwindcss-rails is at v4
 gem "tailwindcss-ruby", "~> 4.0"
