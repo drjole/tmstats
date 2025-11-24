@@ -7,11 +7,7 @@ image: drjole/tmstats
 # Deploy to these servers.
 servers:
   web:
-    hosts:
-      - 46.38.242.139
-    proxy: false
-    options:
-      network-alias: tmstats-web
+    - 46.38.242.139
     # job:
     #   hosts:
     #     - 192.168.0.1
@@ -19,9 +15,9 @@ servers:
 
 # Enable SSL auto certification via Let's Encrypt (and allow for multiple apps on one server).
 # Set ssl: false if using something like Cloudflare to terminate SSL (but keep host!).
-# proxy:
-# ssl: true
-# host: app.example.com
+proxy:
+  ssl: false
+  host: tmstats.jole.dev
 
 # Credentials for your image host.
 registry:
