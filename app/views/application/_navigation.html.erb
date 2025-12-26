@@ -3,9 +3,9 @@
     <%= render(CardComponent.new) do %>
       <div class="flex flex-1 justify-evenly font-bold">
 
-        <% if policy(:leaderboards).show? %>
-          <%= link_to :leaderboard do %>
-            <%= icon("trophy") %>
+        <% if policy(Game).index? %>
+          <%= link_to Game do %>
+            <%= icon("list-ul") %>
           <% end %>
         <% end %>
 
@@ -15,9 +15,9 @@
           <% end %>
         <% end %>
 
-        <% if policy(Game).index? %>
-          <%= link_to Game do %>
-            <%= icon("list-ul") %>
+        <% if policy(:leaderboards).show? %>
+          <%= link_to :leaderboard do %>
+            <%= icon("trophy") %>
           <% end %>
         <% end %>
 
